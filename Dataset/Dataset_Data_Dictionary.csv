@@ -1,0 +1,76 @@
+﻿file,field,meaning,role_in_model
+Marketing_Questionnaire_Synthetic_5000.csv,scenario_id,scenario id,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,company_profile_id,company profile id,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,campaign_variant,campaign variant,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,dataset_type,dataset type,exclude from model features
+Marketing_Questionnaire_Synthetic_5000.csv,ml_split,ml split,exclude from model features
+Marketing_Questionnaire_Synthetic_5000.csv,respondent_role_synthetic,respondent role synthetic,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,company_size_synthetic,company size synthetic,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q1_product_service_name,Q1 product service name,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q2_product_description,Q2 product description,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q3_main_features,Q3 main features,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q4_industry,Q4 industry,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q5_primary_target_customer,Q5 primary target customer,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q6_market_type,Q6 market type,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q7_target_age_group,Q7 target age group,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q8_customer_occupation,Q8 customer occupation,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q9_target_location,Q9 target location,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q10_technology_comfort,Q10 technology comfort,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q11_technical_terms_familiarity,Q11 technical terms familiarity,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q12_message_detail_preference,Q12 message detail preference,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q13_main_customer_benefit,Q13 main customer benefit,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q14_actual_customer_pain_points,Q14 actual customer pain points,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q15_current_marketing_channels,Q15 current marketing channels,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q16_prior_best_channels,Q16 prior best channels,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q17_preferred_content,Q17 preferred content,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q18_monthly_marketing_budget_LKR,Q18 monthly marketing budget LKR,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q19_budget_flexibility,Q19 budget flexibility,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q20_campaign_duration,Q20 campaign duration,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,Q21_success_definition,Q21 success definition,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,audience_behavior_text,audience behavior text,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,technical_comfort_score_1to5,technical comfort score 1to5,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,technical_terms_score_1to5,technical terms score 1to5,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,simulated_technical_literacy_label,simulated technical literacy label,target / exclude from training
+Marketing_Questionnaire_Synthetic_5000.csv,label_origin,label origin,exclude from model features
+Marketing_Questionnaire_Synthetic_5000.csv,campaign_primary_goal,campaign primary goal,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,goal_KPI_unit,goal KPI unit,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,synthetic_KPI_target_per_month,synthetic KPI target per month,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,proposed_message_TEMPLATE_only,proposed message TEMPLATE only,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,total_campaign_budget_LKR,total campaign budget LKR,context / scenario input
+Marketing_Questionnaire_Synthetic_5000.csv,provenance,provenance,exclude from model features
+Audience_Classifier_ML_5000.csv,scenario_id,scenario id,EXCLUDE target leakage
+Audience_Classifier_ML_5000.csv,company_profile_id,company profile id,EXCLUDE target leakage
+Audience_Classifier_ML_5000.csv,ml_split,ml split,EXCLUDE target leakage
+Audience_Classifier_ML_5000.csv,industry,industry,candidate feature
+Audience_Classifier_ML_5000.csv,market_type,market type,candidate feature
+Audience_Classifier_ML_5000.csv,customer_role,customer role,candidate feature
+Audience_Classifier_ML_5000.csv,age_group,age group,candidate feature
+Audience_Classifier_ML_5000.csv,location,location,candidate feature
+Audience_Classifier_ML_5000.csv,customer_audience_text,customer audience text,candidate feature
+Audience_Classifier_ML_5000.csv,technology_comfort_1to5,technology comfort 1to5,candidate feature
+Audience_Classifier_ML_5000.csv,technical_terms_familiarity_1to5,technical terms familiarity 1to5,candidate feature
+Audience_Classifier_ML_5000.csv,technical_literacy_reference_label_SIMULATED,technical literacy reference label SIMULATED,EXCLUDE target leakage
+Audience_Classifier_ML_5000.csv,rule_baseline_label,rule baseline label,EXCLUDE target leakage
+Audience_Classifier_ML_5000.csv,label_origin,label origin,EXCLUDE target leakage
+Audience_Classifier_ML_5000.csv,forbidden_training_fields_note,forbidden training fields note,EXCLUDE target leakage
+Marketing_Channel_Budget_5000.csv,scenario_id,scenario id,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,company_profile_id,company profile id,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,ml_split,ml split,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,industry,industry,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,market_type,market type,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,campaign_goal,campaign goal,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,monthly_budget_LKR,monthly budget LKR,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,campaign_months,campaign months,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,total_campaign_budget_LKR,total campaign budget LKR,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,channel_1,channel 1,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_1_score_0to100,channel 1 score 0to100,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_1_monthly_LKR,channel 1 monthly LKR,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_2,channel 2,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_2_score_0to100,channel 2 score 0to100,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_2_monthly_LKR,channel 2 monthly LKR,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_3,channel 3,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_3_score_0to100,channel 3 score 0to100,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,channel_3_monthly_LKR,channel 3 monthly LKR,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,unallocated_monthly_LKR,unallocated monthly LKR,computed illustrative recommendation
+Marketing_Channel_Budget_5000.csv,ranking_heuristic_version,ranking heuristic version,campaign input or identifier
+Marketing_Channel_Budget_5000.csv,is_real_observed_outcome,is real observed outcome,campaign input or identifier

@@ -1,0 +1,69 @@
+# ==============================================================================
+# Git Ignore Configuration - Marketing Strategy Assessment System
+# ==============================================================================
+
+# Environment files with sensitive credentials / API keys
+.env
+.env.*
+!.env.example
+*.local
+
+# Node.js & Frontend dependencies / build output
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.local
+*.tsbuildinfo
+.npm
+.yarn
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python & ML Caches
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Operating System & IDE Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# IDE / Agent Scratch & System Logs
+.system_generated/
+*/.system_generated/
+scratch/
+*/scratch/
+
+# Keep Model Artifacts and Datasets Tracked in Git
+!ml/artifacts/*.pt
+!ml/artifacts/*.joblib
+!Dataset/*.csv

@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-10-20",
+  "seed": 20261020,
+  "records": 5000,
+  "fictional_company_profiles": 1000,
+  "campaign_scenarios_per_profile": 5,
+  "provenance": "Entire dataset synthetic; no primary responses, observed campaign outcomes, validated labels, or expert judgements.",
+  "split_counts": {
+    "train": 3750,
+    "validation": 750,
+    "test": 500
+  },
+  "industry_counts": {
+    "E-commerce": 720,
+    "Software / SaaS": 1585,
+    "Artificial Intelligence": 580,
+    "Cybersecurity": 340,
+    "Other": 345,
+    "FinTech": 425,
+    "Education Technology": 570,
+    "Healthcare Technology": 435
+  },
+  "literacy_counts": {
+    "Low": 1369,
+    "Medium": 2172,
+    "High": 1459
+  },
+  "market_counts": {
+    "B2C": 1365,
+    "B2B": 2410,
+    "Both": 1225
+  },
+  "zero_budget_count": 131,
+  "median_budget_LKR": 68000.0,
+  "mean_budget_LKR": 128074,
+  "allocation_mismatches": 0,
+  "channel_top1_counts": {
+    "Facebook": 1812,
+    "Instagram": 370,
+    "Website/SEO": 934,
+    "Google Ads": 808,
+    "LinkedIn": 506,
+    "YouTube": 330,
+    "TikTok": 142,
+    "Email Marketing": 98
+  },
+  "baseline_rule_agreement_rate": 0.7532,
+  "evidence_urls": [
+    "https://datareportal.com/reports/digital-2026-sri-lanka",
+    "https://www.srilankabusiness.com/news/sri-lankas-export-performance-exceeded-us-17.2-billion-in-2025.html",
+    "https://www.icta.lk/icta-assets/uploads/2023/05/Annex-1-National-Digital-Strategy-2030.pdf"
+  ],
+  "limitation": "External source data informs broad context only. Synthetic row frequencies, prices, channel scores, AHP-style weights and class priors are author assumptions, not observed Sri Lankan market estimates."
+}

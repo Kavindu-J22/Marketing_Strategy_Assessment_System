@@ -1,0 +1,55 @@
+{
+  "accuracy": 0.906,
+  "macro_precision": 0.9118,
+  "macro_recall": 0.9039,
+  "macro_f1": 0.9069,
+  "weighted_f1": 0.9062,
+  "per_class": {
+    "Low": {
+      "precision": 0.875,
+      "recall": 0.9225,
+      "f1": 0.8981,
+      "support": 129
+    },
+    "Medium": {
+      "precision": 0.8947,
+      "recall": 0.9132,
+      "f1": 0.9039,
+      "support": 242
+    },
+    "High": {
+      "precision": 0.9658,
+      "recall": 0.876,
+      "f1": 0.9187,
+      "support": 129
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "Low",
+      "Medium",
+      "High"
+    ],
+    "matrix": [
+      [
+        119,
+        10,
+        0
+      ],
+      [
+        17,
+        221,
+        4
+      ],
+      [
+        0,
+        16,
+        113
+      ]
+    ]
+  },
+  "model_name": "PyTorch Multimodal Fusion Network (Text + Structured)",
+  "evaluated_at": "2026-10-20T13:36:56.420771+00:00",
+  "device": "cpu",
+  "provenance": "Synthetic holdout (N=500, 100 held-out company profiles)"
+}

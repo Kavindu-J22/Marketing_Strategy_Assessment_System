@@ -1,0 +1,214 @@
+{
+  "rule_baseline": {
+    "model_name": "Rule-Based Baseline (Q10+Q11 Thresholds)",
+    "evaluated_at": "2026-10-20T13:30:01.112098+00:00",
+    "accuracy": 0.728,
+    "macro_precision": 0.7316,
+    "macro_recall": 0.7355,
+    "macro_f1": 0.7322,
+    "weighted_f1": 0.7281,
+    "per_class": {
+      "Low": {
+        "precision": 0.7833,
+        "recall": 0.7287,
+        "f1": 0.755,
+        "support": 129
+      },
+      "Medium": {
+        "precision": 0.7265,
+        "recall": 0.7025,
+        "f1": 0.7143,
+        "support": 242
+      },
+      "High": {
+        "precision": 0.6849,
+        "recall": 0.7752,
+        "f1": 0.7273,
+        "support": 129
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "matrix": [
+        [
+          94,
+          35,
+          0
+        ],
+        [
+          26,
+          170,
+          46
+        ],
+        [
+          0,
+          29,
+          100
+        ]
+      ]
+    }
+  },
+  "tfidf_logistic_regression": {
+    "model_name": "TF-IDF + Structured Logistic Regression",
+    "evaluated_at": "2026-10-20T13:30:03.258866+00:00",
+    "accuracy": 0.912,
+    "macro_precision": 0.9153,
+    "macro_recall": 0.9128,
+    "macro_f1": 0.9127,
+    "weighted_f1": 0.9119,
+    "per_class": {
+      "Low": {
+        "precision": 0.8794,
+        "recall": 0.9612,
+        "f1": 0.9185,
+        "support": 129
+      },
+      "Medium": {
+        "precision": 0.9091,
+        "recall": 0.9091,
+        "f1": 0.9091,
+        "support": 242
+      },
+      "High": {
+        "precision": 0.9573,
+        "recall": 0.8682,
+        "f1": 0.9106,
+        "support": 129
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "matrix": [
+        [
+          124,
+          5,
+          0
+        ],
+        [
+          17,
+          220,
+          5
+        ],
+        [
+          0,
+          17,
+          112
+        ]
+      ]
+    }
+  },
+  "text_only_ablation": {
+    "model_name": "Text-Only TF-IDF Ablation",
+    "evaluated_at": "2026-10-20T13:30:04.472854+00:00",
+    "accuracy": 0.922,
+    "macro_precision": 0.9306,
+    "macro_recall": 0.9209,
+    "macro_f1": 0.922,
+    "weighted_f1": 0.9216,
+    "per_class": {
+      "Low": {
+        "precision": 0.8776,
+        "recall": 1.0,
+        "f1": 0.9348,
+        "support": 129
+      },
+      "Medium": {
+        "precision": 0.9143,
+        "recall": 0.9256,
+        "f1": 0.9199,
+        "support": 242
+      },
+      "High": {
+        "precision": 1.0,
+        "recall": 0.8372,
+        "f1": 0.9114,
+        "support": 129
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "matrix": [
+        [
+          129,
+          0,
+          0
+        ],
+        [
+          18,
+          224,
+          0
+        ],
+        [
+          0,
+          21,
+          108
+        ]
+      ]
+    }
+  },
+  "structured_only_ablation": {
+    "model_name": "Structured-Only Random Forest Ablation",
+    "evaluated_at": "2026-10-20T13:30:08.324176+00:00",
+    "accuracy": 0.732,
+    "macro_precision": 0.7464,
+    "macro_recall": 0.7189,
+    "macro_f1": 0.7303,
+    "weighted_f1": 0.7318,
+    "per_class": {
+      "Low": {
+        "precision": 0.8,
+        "recall": 0.6822,
+        "f1": 0.7364,
+        "support": 129
+      },
+      "Medium": {
+        "precision": 0.7015,
+        "recall": 0.7769,
+        "f1": 0.7373,
+        "support": 242
+      },
+      "High": {
+        "precision": 0.7377,
+        "recall": 0.6977,
+        "f1": 0.7171,
+        "support": 129
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "matrix": [
+        [
+          88,
+          41,
+          0
+        ],
+        [
+          22,
+          188,
+          32
+        ],
+        [
+          0,
+          39,
+          90
+        ]
+      ]
+    }
+  }
+}
