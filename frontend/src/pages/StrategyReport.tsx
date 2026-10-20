@@ -255,7 +255,7 @@ export const StrategyReport: React.FC = () => {
       {/* 4 CARDS GRID */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
         {/* CARD 1: AUDIENCE TECHNICAL LITERACY (FR3) */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -309,7 +309,7 @@ export const StrategyReport: React.FC = () => {
               {/* Probabilities Breakdown */}
               <Grid container spacing={1} sx={{ mb: 2.5 }}>
                 {Object.entries(audience.probabilities || {}).map(([cls, prob]) => (
-                  <Grid item xs={4} key={cls}>
+                  <Grid size={{ xs: 4 }} key={cls}>
                     <Box sx={{ bgcolor: 'rgba(0,0,0,0.25)', p: 1, borderRadius: 1.5, textAlign: 'center' }}>
                       <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
                         {cls}
@@ -347,7 +347,7 @@ export const StrategyReport: React.FC = () => {
         </Grid>
 
         {/* CARD 2: FEATURE-TO-VALUE MESSAGING (FR4) */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
@@ -397,7 +397,7 @@ export const StrategyReport: React.FC = () => {
               </Box>
 
               <Grid container spacing={2} sx={{ mb: 2 }}>
-                <Grid item xs={6}>
+                <Grid size={{ xs: 6 }}>
                   <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
                     HEADLINE:
                   </Typography>
@@ -405,7 +405,7 @@ export const StrategyReport: React.FC = () => {
                     {feature_value_messages.short_headline}
                   </Typography>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid size={{ xs: 6 }}>
                   <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
                     RECOMMENDED CTA:
                   </Typography>
@@ -424,7 +424,7 @@ export const StrategyReport: React.FC = () => {
         </Grid>
 
         {/* CARD 3: AHP CHANNEL RANKING (FR5) */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -489,7 +489,7 @@ export const StrategyReport: React.FC = () => {
         </Grid>
 
         {/* CARD 4: CONSTRAINT-AWARE BUDGET ALLOCATION (FR6) */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -508,7 +508,7 @@ export const StrategyReport: React.FC = () => {
 
               {/* Totals Header */}
               <Grid container spacing={2} sx={{ mb: 2 }}>
-                <Grid item xs={4}>
+                <Grid size={{ xs: 4 }}>
                   <Typography variant="caption" sx={{ color: '#94a3b8' }}>
                     MONTHLY BUDGET:
                   </Typography>
@@ -516,7 +516,7 @@ export const StrategyReport: React.FC = () => {
                     LKR {(budget.monthly_budget_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid size={{ xs: 4 }}>
                   <Typography variant="caption" sx={{ color: '#94a3b8' }}>
                     CAMPAIGN TOTAL ({budget.campaign_months ?? 1} mo):
                   </Typography>
@@ -524,7 +524,7 @@ export const StrategyReport: React.FC = () => {
                     LKR {(budget.total_budget_lkr ?? budget.total_campaign_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid size={{ xs: 4 }}>
                   <Typography variant="caption" sx={{ color: '#94a3b8' }}>
                     CONTINGENCY RESERVE:
                   </Typography>
@@ -569,18 +569,18 @@ export const StrategyReport: React.FC = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {budget.allocations.map((a, idx) => {
-                      const eq = budget.baseline_equal_allocations[idx];
+                    {(budget.allocations || []).map((a: any, idx: number) => {
+                      const eq = budget.baseline_equal_allocations?.[idx];
                       return (
-                        <TableRow key={a.channel_id} hover>
+                        <TableRow key={a.channel_id || a.channel_name} hover>
                           <TableCell sx={{ color: '#f1f5f9', fontWeight: 600 }}>{a.channel_name}</TableCell>
                           <TableCell sx={{ color: '#10b981', fontWeight: 700 }}>
-                            LKR {a.monthly_lkr.toLocaleString()}
+                            LKR {(a.monthly_lkr ?? 0).toLocaleString()}
                           </TableCell>
                           <TableCell sx={{ color: '#94a3b8' }}>
-                            LKR {(eq?.monthly_lkr || 0).toLocaleString()}
+                            LKR {(eq?.monthly_lkr || Math.round((budget.monthly_budget_lkr ?? 0) / (budget.allocations?.length || 1))).toLocaleString()}
                           </TableCell>
-                          <TableCell sx={{ color: '#cbd5e1' }}>{a.percentage.toFixed(1)}%</TableCell>
+                          <TableCell sx={{ color: '#cbd5e1' }}>{(a.percentage ?? 0).toFixed(1)}%</TableCell>
                         </TableRow>
                       );
                     })}
@@ -604,7 +604,7 @@ export const StrategyReport: React.FC = () => {
           </Typography>
           <Grid container spacing={2}>
             {report.source_citations?.map((cit, idx) => (
-              <Grid item xs={12} md={6} key={idx}>
+              <Grid size={{ xs: 12, md: 6 }} key={idx}>
                 <Box sx={{ p: 2, bgcolor: 'rgba(0,0,0,0.2)', borderRadius: 2, border: '1px solid rgba(255,255,255,0.06)' }}>
                   <Typography variant="subtitle2" sx={{ fontWeight: 600, color: '#38bdf8' }}>
                     {cit.title}

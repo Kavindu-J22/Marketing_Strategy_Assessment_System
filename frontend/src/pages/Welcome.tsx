@@ -74,7 +74,7 @@ export const Welcome: React.FC = () => {
       </Typography>
 
       <Grid container spacing={3} sx={{ mb: 6 }}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%', p: 1 }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
@@ -94,7 +94,7 @@ export const Welcome: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%', p: 1 }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
@@ -114,7 +114,7 @@ export const Welcome: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%', p: 1 }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
@@ -134,7 +134,7 @@ export const Welcome: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%', p: 1 }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>

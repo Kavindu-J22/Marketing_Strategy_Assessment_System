@@ -257,7 +257,7 @@ export const AHPMatrixExpert: React.FC = () => {
 
       <Grid container spacing={3}>
         {/* Left: 5x5 Pairwise Matrix UI */}
-        <Grid item xs={12} lg={8}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -383,7 +383,7 @@ export const AHPMatrixExpert: React.FC = () => {
         </Grid>
 
         {/* Right: Derived Weights & Math Diagnostics */}
-        <Grid item xs={12} lg={4}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {/* Derived Weights Bar Chart */}
             <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>

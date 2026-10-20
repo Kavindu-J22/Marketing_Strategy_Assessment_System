@@ -63,7 +63,7 @@ export const Methodology: React.FC = () => {
       {/* Grid of 4 Methodology Pillars */}
       <Grid container spacing={4}>
         {/* Pillar 1: Multimodal Audience Classifier */}
-        <Grid item xs={12} lg={6}>
+        <Grid size={{ xs: 12, lg: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
@@ -98,7 +98,7 @@ export const Methodology: React.FC = () => {
         </Grid>
 
         {/* Pillar 2: Analytic Hierarchy Process */}
-        <Grid item xs={12} lg={6}>
+        <Grid size={{ xs: 12, lg: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
@@ -133,7 +133,7 @@ export const Methodology: React.FC = () => {
         </Grid>
 
         {/* Pillar 3: Constrained Budget Optimization */}
-        <Grid item xs={12} lg={6}>
+        <Grid size={{ xs: 12, lg: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
@@ -168,7 +168,7 @@ export const Methodology: React.FC = () => {
         </Grid>
 
         {/* Pillar 4: System Usability Scale */}
-        <Grid item xs={12} lg={6}>
+        <Grid size={{ xs: 12, lg: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
             <CardContent sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>

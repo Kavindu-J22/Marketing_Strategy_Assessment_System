@@ -118,7 +118,7 @@ export const SUSSurvey: React.FC = () => {
 
       <Grid container spacing={4}>
         {/* Form Column */}
-        <Grid item xs={12} lg={8}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent sx={{ p: 4 }}>
               {submitted ? (
@@ -257,7 +257,7 @@ export const SUSSurvey: React.FC = () => {
         </Grid>
 
         {/* Live Score Preview Column */}
-        <Grid item xs={12} lg={4}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
               <CardContent>

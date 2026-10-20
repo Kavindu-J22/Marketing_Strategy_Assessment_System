@@ -167,7 +167,7 @@ export const ResearchEvaluation: React.FC = () => {
 
       {/* Top Model Comparison Chart */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} lg={8}>
+        <Grid size={{ xs: 12, lg: 8 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -201,7 +201,7 @@ export const ResearchEvaluation: React.FC = () => {
         </Grid>
 
         {/* Primary Multimodal Model Stats */}
-        <Grid item xs={12} lg={4}>
+        <Grid size={{ xs: 12, lg: 4 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(13, 148, 136, 0.3)', height: '100%' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
@@ -292,7 +292,7 @@ export const ResearchEvaluation: React.FC = () => {
 
       {/* Confusion Matrix and Per-Class Breakdown */}
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
               <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
@@ -336,7 +336,7 @@ export const ResearchEvaluation: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
               <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>

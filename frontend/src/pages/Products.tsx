@@ -169,7 +169,7 @@ export const Products: React.FC = () => {
       ) : (
         <Grid container spacing={3}>
           {products.map((prod) => (
-            <Grid item xs={12} md={6} key={prod.id}>
+            <Grid size={{ xs: 12, md: 6 }} key={prod.id}>
               <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flexGrow: 1, p: 3 }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1.5 }}>

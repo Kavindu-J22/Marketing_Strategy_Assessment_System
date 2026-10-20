@@ -146,7 +146,7 @@ export const CampaignComparison: React.FC = () => {
 
       {/* Selector Controls */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(20, 184, 166, 0.4)' }}>
             <CardContent>
               <Typography variant="caption" sx={{ color: '#14b8a6', fontWeight: 700, textTransform: 'uppercase' }}>
@@ -171,7 +171,7 @@ export const CampaignComparison: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(56, 189, 248, 0.4)' }}>
             <CardContent>
               <Typography variant="caption" sx={{ color: '#38bdf8', fontWeight: 700, textTransform: 'uppercase' }}>
@@ -199,7 +199,7 @@ export const CampaignComparison: React.FC = () => {
 
       {/* High Level Differences Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
@@ -227,7 +227,7 @@ export const CampaignComparison: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
@@ -255,7 +255,7 @@ export const CampaignComparison: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
@@ -315,7 +315,7 @@ export const CampaignComparison: React.FC = () => {
 
       {/* Messaging Contrast */}
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(20, 184, 166, 0.2)', height: '100%' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
@@ -334,7 +334,7 @@ export const CampaignComparison: React.FC = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(56, 189, 248, 0.2)', height: '100%' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>

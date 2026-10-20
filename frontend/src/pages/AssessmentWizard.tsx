@@ -526,7 +526,7 @@ export const AssessmentWizard: React.FC = () => {
             </FormControl>
 
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
                   label="7. Target Age Group (Q7)"
@@ -542,7 +542,7 @@ export const AssessmentWizard: React.FC = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
                   label="9. Target Location in Sri Lanka (Q9)"
@@ -868,7 +868,7 @@ export const AssessmentWizard: React.FC = () => {
             />
 
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
                   label="19. How flexible is your marketing budget? (Q19)"
@@ -884,7 +884,7 @@ export const AssessmentWizard: React.FC = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
                   label="20. Expected Campaign Duration (Q20)"
@@ -943,7 +943,7 @@ export const AssessmentWizard: React.FC = () => {
             </Box>
 
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   label="Optional Monthly KPI Target Count"
                   type="number"
@@ -953,7 +953,7 @@ export const AssessmentWizard: React.FC = () => {
                   helperText="e.g. 50 leads or 5,000 visitors per month"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   label="KPI Target Unit"
                   fullWidth
@@ -981,7 +981,7 @@ export const AssessmentWizard: React.FC = () => {
             </Box>
 
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box sx={{ bgcolor: 'rgba(0,0,0,0.2)', p: 2, borderRadius: 2 }}>
                   <Typography variant="subtitle2" sx={{ color: '#14b8a6', fontWeight: 600 }}>
                     Product & Audience Summary
@@ -998,7 +998,7 @@ export const AssessmentWizard: React.FC = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box sx={{ bgcolor: 'rgba(0,0,0,0.2)', p: 2, borderRadius: 2 }}>
                   <Typography variant="subtitle2" sx={{ color: '#38bdf8', fontWeight: 600 }}>
                     Budget & Goals
