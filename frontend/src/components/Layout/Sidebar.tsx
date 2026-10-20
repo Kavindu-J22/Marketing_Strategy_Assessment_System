@@ -96,9 +96,11 @@ export const Sidebar: React.FC = () => {
                 </ListItemIcon>
                 <ListItemText
                   primary={item.label}
-                  primaryTypographyProps={{
-                    fontSize: '0.875rem',
-                    fontWeight: isActive ? 600 : 500,
+                  slotProps={{
+                    primary: {
+                      fontSize: '0.875rem',
+                      fontWeight: isActive ? 600 : 500,
+                    },
                   }}
                 />
                 {item.badge && (

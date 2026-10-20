@@ -513,15 +513,15 @@ export const StrategyReport: React.FC = () => {
                     MONTHLY BUDGET:
                   </Typography>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
-                    LKR {budget.monthly_budget_lkr.toLocaleString()}
+                    LKR {(budget.monthly_budget_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="caption" sx={{ color: '#94a3b8' }}>
-                    CAMPAIGN TOTAL ({budget.campaign_months} mo):
+                    CAMPAIGN TOTAL ({budget.campaign_months ?? 1} mo):
                   </Typography>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#38bdf8' }}>
-                    LKR {budget.total_budget_lkr.toLocaleString()}
+                    LKR {(budget.total_budget_lkr ?? budget.total_campaign_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
@@ -529,7 +529,7 @@ export const StrategyReport: React.FC = () => {
                     CONTINGENCY RESERVE:
                   </Typography>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#fbbf24' }}>
-                    LKR {budget.reserve_monthly_lkr.toLocaleString()}
+                    LKR {(budget.reserve_monthly_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
               </Grid>
