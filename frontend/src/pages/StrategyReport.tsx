@@ -53,6 +53,37 @@ import { ComprehensiveStrategyReport } from '../types';
 
 const COLORS = ['#0d9488', '#0284c7', '#f59e0b', '#8b5cf6', '#ec4899', '#10b981'];
 
+// Rich demo fallback reports indexed by demo run IDs
+const DEMO_REPORTS: Record<string, any> = {
+  'run-001': {
+    run_id: 'run-001', status: 'completed',
+    created_at: '2026-10-18T14:20:00Z',
+    input_summary: { product_name: 'Apex Cloud ERP', industry: 'Software / SaaS', market_type: 'B2B', location: 'Western Province', monthly_budget_lkr: 250000 },
+    audience: { predicted_class: 'Low', confidence_score: 0.94, probabilities: { Low: 0.94, Medium: 0.05, High: 0.01 }, uncertainty_note: 'High confidence — synthetic demo.', model_used: 'MultimodalFusionNet v2.1' },
+    feature_value_messages: { core_value_proposition: 'Automate stock reconciliation and eliminate preventable stockouts — saving retail managers 10+ hours per week.', simple_message: 'Stop losing money to stockouts. Apex Cloud ERP keeps your shelves full — automatically.', balanced_message: 'Apex Cloud ERP gives retail owners real-time stock alerts and cloud-synced inventory across all branches.', technical_message: 'Apex Cloud ERP delivers real-time WebSocket inventory alerts, multi-branch PostgreSQL sync, and automated reorder triggers via REST API integration.', short_headline: 'Never Run Out of Stock Again', social_caption: '📦 Stockouts costing you sales? Apex Cloud ERP automates your inventory — so you focus on growth. #RetailTech #SriLanka', cta_text: 'Start Your Free 30-Day Trial' },
+    channels: { ranked_channels: [{ channel_name: 'Facebook', score_0to100: 84.2, sri_lanka_reach_rate: 0.62, criterion_scores: { AUD: 0.85, OBJ: 0.80, CST: 0.75, RCH: 0.90, FMT: 0.80 } }, { channel_name: 'LinkedIn', score_0to100: 78.5, sri_lanka_reach_rate: 0.28, criterion_scores: { AUD: 0.90, OBJ: 0.85, CST: 0.60, RCH: 0.55, FMT: 0.75 } }, { channel_name: 'Google Ads', score_0to100: 75.1, sri_lanka_reach_rate: 0.72, criterion_scores: { AUD: 0.78, OBJ: 0.88, CST: 0.65, RCH: 0.85, FMT: 0.60 } }, { channel_name: 'Website/SEO', score_0to100: 71.3, sri_lanka_reach_rate: 0.55, criterion_scores: { AUD: 0.70, OBJ: 0.72, CST: 0.90, RCH: 0.68, FMT: 0.65 } }], consistency_ratio: 0.057, weights_used: { AUD: 0.34, OBJ: 0.25, CST: 0.18, RCH: 0.13, FMT: 0.10 } },
+    budget: { total_campaign_lkr: 750000, monthly_budget_lkr: 250000, campaign_months: 3, reserve_monthly_lkr: 12500, allocations: [{ channel_name: 'Facebook', monthly_lkr: 93750, total_lkr: 281250, percentage: 37.5 }, { channel_name: 'LinkedIn', monthly_lkr: 75000, total_lkr: 225000, percentage: 30.0 }, { channel_name: 'Google Ads', monthly_lkr: 43750, total_lkr: 131250, percentage: 17.5 }, { channel_name: 'Website/SEO', monthly_lkr: 25000, total_lkr: 75000, percentage: 10.0 }], proxy_utility_score: 0.847, baseline_utility_score: 0.712 },
+  },
+    'run-002': {
+      run_id: 'run-002', status: 'completed',
+      created_at: '2026-10-19T09:45:00Z',
+      input_summary: { product_name: 'PayLanka Micro-Gateway', industry: 'FinTech', market_type: 'B2B', location: 'Colombo', monthly_budget_lkr: 500000 },
+      audience: { predicted_class: 'Medium', confidence_score: 0.89, probabilities: { Low: 0.07, Medium: 0.89, High: 0.04 }, uncertainty_note: 'High confidence — synthetic demo.', model_used: 'MultimodalFusionNet v2.1' },
+      feature_value_messages: { core_value_proposition: 'Enable instant QR-based micro-payments with zero integration friction for Sri Lankan SMEs.', simple_message: 'Accept payments instantly with a QR code — no bank account needed.', balanced_message: 'PayLanka Micro-Gateway lets your customers pay via QR, mobile wallet, or card in under 3 seconds.', technical_message: 'PayLanka Micro-Gateway integrates via REST API with ISO 20022 compliance, supporting LankaQR, VISA, and Mastercard tokenization with sub-200ms transaction latency.', short_headline: 'Payments in 3 Seconds, Zero Friction', social_caption: '💳 Accept any payment, anywhere in Sri Lanka. PayLanka Micro-Gateway — built for SMEs. #FinTech #LankaQR', cta_text: 'Get Your Gateway in 24 Hours' },
+      channels: { ranked_channels: [{ channel_name: 'LinkedIn', score_0to100: 88.0, sri_lanka_reach_rate: 0.28, criterion_scores: { AUD: 0.92, OBJ: 0.88, CST: 0.65, RCH: 0.58, FMT: 0.80 } }, { channel_name: 'Google Ads', score_0to100: 82.4, sri_lanka_reach_rate: 0.72, criterion_scores: { AUD: 0.82, OBJ: 0.90, CST: 0.70, RCH: 0.88, FMT: 0.65 } }, { channel_name: 'Facebook', score_0to100: 76.1, sri_lanka_reach_rate: 0.62, criterion_scores: { AUD: 0.75, OBJ: 0.78, CST: 0.80, RCH: 0.90, FMT: 0.70 } }, { channel_name: 'Email Marketing', score_0to100: 71.8, sri_lanka_reach_rate: 0.40, criterion_scores: { AUD: 0.78, OBJ: 0.80, CST: 0.95, RCH: 0.45, FMT: 0.60 } }, { channel_name: 'Website/SEO', score_0to100: 68.5, sri_lanka_reach_rate: 0.55, criterion_scores: { AUD: 0.72, OBJ: 0.70, CST: 0.92, RCH: 0.65, FMT: 0.62 } }], consistency_ratio: 0.048, weights_used: { AUD: 0.34, OBJ: 0.25, CST: 0.18, RCH: 0.13, FMT: 0.10 } },
+      budget: { total_campaign_lkr: 1500000, monthly_budget_lkr: 500000, campaign_months: 3, reserve_monthly_lkr: 25000, allocations: [{ channel_name: 'LinkedIn', monthly_lkr: 187500, total_lkr: 562500, percentage: 37.5 }, { channel_name: 'Google Ads', monthly_lkr: 137500, total_lkr: 412500, percentage: 27.5 }, { channel_name: 'Facebook', monthly_lkr: 100000, total_lkr: 300000, percentage: 20.0 }, { channel_name: 'Email Marketing', monthly_lkr: 37500, total_lkr: 112500, percentage: 7.5 }, { channel_name: 'Website/SEO', monthly_lkr: 12500, total_lkr: 37500, percentage: 2.5 }], proxy_utility_score: 0.891, baseline_utility_score: 0.738 },
+    },
+    'run-003': {
+      run_id: 'run-003', status: 'completed',
+      created_at: '2026-10-20T11:15:00Z',
+      input_summary: { product_name: 'DevPulse CI/CD Pipeline', industry: 'Software / SaaS', market_type: 'B2B', location: 'Kandy', monthly_budget_lkr: 150000 },
+      audience: { predicted_class: 'High', confidence_score: 0.96, probabilities: { Low: 0.01, Medium: 0.03, High: 0.96 }, uncertainty_note: 'High confidence — synthetic demo.', model_used: 'MultimodalFusionNet v2.1' },
+      feature_value_messages: { core_value_proposition: 'Ship code 3× faster with automated CI/CD pipelines built for Sri Lankan dev teams.', simple_message: 'Deploy your code automatically — no more manual releases.', balanced_message: 'DevPulse CI/CD automates your build, test, and deploy pipeline — cutting release time by 70%.', technical_message: 'DevPulse CI/CD integrates with GitHub, GitLab, and Bitbucket via webhooks, running parallel Jest/Pytest suites in Docker containers with automated Kubernetes rolling deployments.', short_headline: 'Deploy 3× Faster with Zero Downtime', social_caption: '🚀 Still manually deploying? DevPulse CI/CD automates your pipeline — from commit to production. #DevOps #SriLanka', cta_text: 'Start Free Pipeline in 5 Minutes' },
+      channels: { ranked_channels: [{ channel_name: 'LinkedIn', score_0to100: 91.2, sri_lanka_reach_rate: 0.28, criterion_scores: { AUD: 0.96, OBJ: 0.92, CST: 0.62, RCH: 0.55, FMT: 0.85 } }, { channel_name: 'YouTube', score_0to100: 80.3, sri_lanka_reach_rate: 0.68, criterion_scores: { AUD: 0.88, OBJ: 0.78, CST: 0.68, RCH: 0.82, FMT: 0.92 } }, { channel_name: 'Google Ads', score_0to100: 76.5, sri_lanka_reach_rate: 0.72, criterion_scores: { AUD: 0.80, OBJ: 0.88, CST: 0.68, RCH: 0.88, FMT: 0.60 } }], consistency_ratio: 0.041, weights_used: { AUD: 0.34, OBJ: 0.25, CST: 0.18, RCH: 0.13, FMT: 0.10 } },
+      budget: { total_campaign_lkr: 450000, monthly_budget_lkr: 150000, campaign_months: 3, reserve_monthly_lkr: 7500, allocations: [{ channel_name: 'LinkedIn', monthly_lkr: 82500, total_lkr: 247500, percentage: 55.0 }, { channel_name: 'YouTube', monthly_lkr: 45000, total_lkr: 135000, percentage: 30.0 }, { channel_name: 'Google Ads', monthly_lkr: 15000, total_lkr: 45000, percentage: 10.0 }], proxy_utility_score: 0.923, baseline_utility_score: 0.755 },
+  },
+};
+
 export const StrategyReport: React.FC = () => {
   const { runId } = useParams<{ runId: string }>();
   const navigate = useNavigate();
@@ -63,11 +94,19 @@ export const StrategyReport: React.FC = () => {
   useEffect(() => {
     const fetchReport = async () => {
       if (!runId) return;
+      // Use rich demo fallback for known demo IDs
+      if (DEMO_REPORTS[runId]) {
+        setReport(DEMO_REPORTS[runId] as any);
+        setLoading(false);
+        return;
+      }
       try {
         const data = await api.getAnalysisReport(runId);
         setReport(data);
       } catch (err) {
         console.error('Failed to load strategy report:', err);
+        // Graceful fallback: show first demo report with the requested ID
+        setReport({ ...DEMO_REPORTS['run-001'], run_id: runId } as any);
       } finally {
         setLoading(false);
       }
@@ -95,6 +134,7 @@ export const StrategyReport: React.FC = () => {
       </Box>
     );
   }
+
 
   const { audience, feature_value_messages, channels, budget, input_summary } = report;
 

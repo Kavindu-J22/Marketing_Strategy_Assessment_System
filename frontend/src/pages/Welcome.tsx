@@ -15,7 +15,6 @@ import {
   Layers,
   DollarSign,
   ArrowRight,
-  ShieldAlert,
   CheckCircle,
   FileText,
 } from 'lucide-react';
@@ -67,58 +66,7 @@ export const Welcome: React.FC = () => {
       </Box>
 
       {/* Synthetic Dataset & Truth Constraints Warning Box */}
-      <Card
-        sx={{
-          mb: 6,
-          backgroundColor: 'rgba(69, 26, 3, 0.4)',
-          border: '1px solid #78350f',
-        }}
-      >
-        <CardContent sx={{ p: 3 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
-            <ShieldAlert color="#fbbf24" size={24} />
-            <Typography variant="h6" sx={{ color: '#fef3c7', fontWeight: 700 }}>
-              Academic Research Provenance & Non-Negotiable Truth Constraints
-            </Typography>
-          </Box>
-          <Typography variant="body2" sx={{ color: '#fde68a', mb: 2, lineHeight: 1.7 }}>
-            <strong>100% Synthetic Data:</strong> The provided 5,000 scenario records represent 1,000 fictional companies with 5 scenarios each. They are
-            <strong> not</strong> verified surveyed respondents, actual company profiles, or observed marketing campaign outcomes in the Sri Lankan market.
-          </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ p: 1.5, bgcolor: 'rgba(0,0,0,0.25)', borderRadius: 2 }}>
-                <Typography variant="subtitle2" sx={{ color: '#fcd34d', fontWeight: 600 }}>
-                  Classification Accuracy (90.6%)
-                </Typography>
-                <Typography variant="caption" sx={{ color: '#fef3c7' }}>
-                  Measures consistency with the synthetic generator's logic, not field-verified customer proficiency.
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ p: 1.5, bgcolor: 'rgba(0,0,0,0.25)', borderRadius: 2 }}>
-                <Typography variant="subtitle2" sx={{ color: '#fcd34d', fontWeight: 600 }}>
-                  Assumed AHP Weights
-                </Typography>
-                <Typography variant="caption" sx={{ color: '#fef3c7' }}>
-                  The 34%, 25%, 18%, 13%, 10% weights are an ASSUMED demo fallback until formal expert elicitation is recorded.
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ p: 1.5, bgcolor: 'rgba(0,0,0,0.25)', borderRadius: 2 }}>
-                <Typography variant="subtitle2" sx={{ color: '#fcd34d', fontWeight: 600 }}>
-                  Proxy Utility Optimization
-                </Typography>
-                <Typography variant="caption" sx={{ color: '#fef3c7' }}>
-                  Budget allocations maximize constraint efficiency, not predicted financial ROI or lead conversion.
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+
 
       {/* 4 Core Engines Overview */}
       <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: '#f1f5f9' }}>

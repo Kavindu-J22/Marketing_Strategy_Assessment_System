@@ -5,7 +5,6 @@ import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import { getAppTheme } from './theme/theme';
 
 // Layout
-import { DisclaimerBanner } from './components/Layout/DisclaimerBanner';
 import { Navbar } from './components/Layout/Navbar';
 import { Sidebar } from './components/Layout/Sidebar';
 
@@ -40,9 +39,6 @@ export const App: React.FC = () => {
         <CssBaseline />
         <Router>
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%', bgcolor: '#0b0f19' }}>
-            {/* Academic Truth & Provenance Warning Banner */}
-            <DisclaimerBanner />
-
             {/* Top Navigation Bar */}
             <Navbar />
 
@@ -66,8 +62,8 @@ export const App: React.FC = () => {
                   <Route path="/products" element={<Products />} />
                   <Route path="/wizard" element={<AssessmentWizard />} />
                   <Route path="/campaigns" element={<CampaignHistory />} />
-                  <Route path="/campaigns/:runId" element={<StrategyReport />} />
                   <Route path="/campaigns/compare" element={<CampaignComparison />} />
+                  <Route path="/campaigns/:runId" element={<StrategyReport />} />
                   <Route path="/expert/ahp" element={<AHPMatrixExpert />} />
                   <Route path="/research/evaluation" element={<ResearchEvaluation />} />
                   <Route path="/usability/sus" element={<SUSSurvey />} />

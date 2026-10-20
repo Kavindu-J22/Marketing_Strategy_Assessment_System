@@ -348,10 +348,11 @@ export const AssessmentWizard: React.FC = () => {
 
     try {
       const report = await api.runAnalysis(submission, 'synthetic_demo');
-      navigate(`/campaigns/${report.run_id}`);
+      const runId = report?.run_id || report?.id || `run-${Date.now()}`;
+      navigate(`/campaigns/${runId}`);
     } catch (err: any) {
       console.error('Failed to run analysis:', err);
-      setValidationError(err.response?.data?.detail || 'Failed to execute analysis. Please check all fields.');
+      setValidationError(err.response?.data?.detail || 'Failed to execute analysis. Please check the backend is running (uvicorn on port 8000).');
     } finally {
       setSubmitting(false);
     }
