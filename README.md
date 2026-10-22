@@ -18,11 +18,12 @@ Sri Lankan technology startups and SMEs face significant challenges in convertin
 This system implements an end-to-end, runnable, research-grade decision-support solution providing:
 - **FR1 Product Information Input:** Captures product name, technical features, problem solved, and industry category.
 - **FR2 Target Audience Profiling:** Captures target customer characteristics, market type (B2B/B2C/Both), role, age, and Sri Lankan geography.
-- **FR3 Audience Technical Literacy Classification:** A trained PyTorch Multimodal Neural Fusion classifier ($90.60\%$ test accuracy on group holdouts) categorizing audiences into Low, Medium, or High technical literacy with calibrated uncertainty.
-- **FR4 AI Feature-to-Value Message Translation:** Server-side Google Gemini structured message generation with strict Pydantic JSON validation, safety guardrails preventing fabricated claims, and deterministic template fallback.
+- **FR3 Audience Technical Literacy Classification:** A trained PyTorch Multimodal Neural Fusion classifier (90.60% test accuracy on group holdouts) categorizing audiences into Low, Medium, or High technical literacy with calibrated uncertainty.
+- **FR4 AI Feature-to-Value Message Translation:** Server-side OpenAI Responses API structured message generation with strict Pydantic v2 JSON validation, Pinecone RAG market context grounding, safety guardrails preventing fabricated claims, and deterministic template fallback.
 - **FR5 Analytical Hierarchy Process (AHP) Channel Recommendation:** Mathematical multi-criteria channel ranking with Saaty pairwise comparison matrices and Consistency Ratio ($CR \le 0.10$) enforcement.
 - **FR6 Constraint-Aware Budget Allocation:** Mathematical optimization via `scipy.optimize` with exact integer Sri Lankan Rupee (LKR) arithmetic, floors/caps, and equal-split baseline comparison.
-- **FR7 Interactive Strategy Dashboard & Export:** Clean, responsive, accessible Material UI dashboard with JSON/CSV/PDF exports and scenario comparison.
+- **FR7 Interactive Strategy Dashboard & Export:** Clean, responsive, accessible Material UI dashboard with JSON/CSV exports and scenario comparison.
+- **Vector Knowledge Base (RAG):** Pinecone vector database with 3072-dimensional embeddings via OpenAI `text-embedding-3-large`, multi-tenant namespace isolation, and canonical document tracking in PostgreSQL (Prisma Postgres).
 
 ---
 

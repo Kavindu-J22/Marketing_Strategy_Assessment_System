@@ -1,9 +1,10 @@
 """
 End-to-End Analysis Pipeline Orchestration Service
-Coordinates Audience Classification, Feature-to-Value Generation, AHP Channel Ranking,
-and Budget Allocation into a persistent, reproducible research strategy report.
+Coordinates PyTorch Audience Classification (FR3), OpenAI Feature-to-Value Generation (FR4)
+with Pinecone RAG Grounding, Saaty AHP Channel Ranking (FR5), and SciPy Budget Optimization (FR6)
+into a persistent, reproducible research strategy report.
 """
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 import uuid
 from datetime import datetime, timezone
 
@@ -18,7 +19,8 @@ from app.schemas.analysis import ComprehensiveStrategyReport
 from app.schemas.common import DataProvenanceEnum, TechLiteracyLevel
 
 from app.ml.inference import classifier_service
-from app.services.gemini_service import messaging_service
+from app.services.openai_service import messaging_service
+from app.services.retrieval_service import knowledge_retriever
 from app.ahp.engine import ahp_engine
 from app.budget.optimizer import budget_optimizer
 
@@ -36,7 +38,7 @@ class AnalysisOrchestrator:
         run_id = f"run-{uuid.uuid4().hex[:12]}"
         now_iso = datetime.now(timezone.utc).isoformat()
         
-        logger.info(f"Starting analysis run {run_id} for org {organization_id}")
+        logger.info(f"Starting standardized analysis run {run_id} for org {organization_id}")
 
         # 1. Prepare Inputs
         p_name = submission.step1.q1_product_name
@@ -76,7 +78,7 @@ class AnalysisOrchestrator:
 
         campaign_goal = submission.step5.q21_success_definition[0] if submission.step5.q21_success_definition else "More brand awareness"
 
-        # 2. Audience Classification (FR3)
+        # 2. Audience Classification (FR3) - Unchanged PyTorch Multimodal Network
         aud_req = AudiencePredictRequest(
             industry=p_industry,
             market_type=market_type,
@@ -90,7 +92,15 @@ class AnalysisOrchestrator:
         )
         audience_result = classifier_service.predict(aud_req)
 
-        # 3. Feature-to-Value Message Generation (FR4)
+        # 3. Vector Knowledge Retrieval (RAG Grounding)
+        rag_query = f"{p_name} {p_industry.value} {customer_role} {primary_benefit} Sri Lanka digital channels"
+        rag_passages = knowledge_retriever.retrieve(
+            query=rag_query,
+            organization_id=organization_id,
+            top_k=3
+        )
+
+        # 4. Feature-to-Value Message Generation (FR4) - OpenAI Responses API with Grounded Passages
         msg_req = MessageGenerateRequest(
             product_name=p_name,
             product_description=p_desc,
@@ -105,9 +115,9 @@ class AnalysisOrchestrator:
             campaign_goal=campaign_goal,
             target_language="en"
         )
-        messages_result = messaging_service.generate_messages(msg_req)
+        messages_result = messaging_service.generate_messages(msg_req, rag_passages=rag_passages)
 
-        # 4. AHP Channel Ranking (FR5)
+        # 5. AHP Channel Ranking (FR5) - Saaty Reciprocal Pairwise Matrix Math
         ch_req = ChannelRankRequest(
             industry=p_industry,
             market_type=market_type,
@@ -122,8 +132,7 @@ class AnalysisOrchestrator:
         )
         channels_result = ahp_engine.evaluate_channels(ch_req)
 
-        # 5. Budget Allocation (FR6)
-        # Select recommended channels (top 3)
+        # 6. Budget Allocation (FR6) - SciPy SLSQP Optimization
         recommended_channels = [
             {
                 "channel_id": ch.channel_id,
@@ -144,27 +153,36 @@ class AnalysisOrchestrator:
         )
         budget_result = budget_optimizer.allocate(budget_req)
 
-        # 6. Citations & Caveats
+        # 7. Assembled Citations & Caveats
         citations = [
             {
-                "id": "src_datareportal_2026",
-                "title": "Digital 2026: Sri Lanka",
-                "note": "Platform reach figures based on Kepios Digital 2026 national benchmarks."
-            },
-            {
-                "id": "src_icta_strategy_2030",
-                "title": "National Digital Strategy 2030",
-                "note": "ICTA national SME tech adoption and export strategy."
+                "id": p.get("source_id", f"src-{idx}"),
+                "title": p.get("title", "Market Report"),
+                "note": f"Retrieved via Pinecone RAG (score: {p.get('score', 0):.2f}). {p.get('trust_tier', '')}"
             }
+            for idx, p in enumerate(rag_passages, 1)
         ]
+        if not citations:
+            citations = [
+                {
+                    "id": "src_datareportal_2026",
+                    "title": "Digital 2026: Sri Lanka",
+                    "note": "Platform reach figures based on Kepios Digital 2026 national benchmarks."
+                },
+                {
+                    "id": "src_icta_strategy_2030",
+                    "title": "National Digital Strategy 2030",
+                    "note": "ICTA national SME tech adoption and export strategy."
+                }
+            ]
 
         caveats = [
-            "Data Provenance: Derived using synthetic research models and initial assumptions. Not yet verified on empirical field data.",
-            "AHP Weights: Weights represent candidate multi-criteria priorities and must be validated through formal expert elicitation.",
-            "Budget Allocation: Utilizes constrained proxy utility optimization. Allocations do not guarantee specific monetary return or lead counts."
+            "Data Provenance: Research dataset comprises 5,000 synthetic Sri Lankan enterprise scenarios. Models are illustrative and not yet empirically validated on live market campaigns.",
+            "AHP Multi-Criteria Weights: Weights represent heuristic priorities and should be confirmed with industry experts.",
+            "Budget Allocation: Utilizes constrained proxy utility optimization in exact integer LKR. Allocations do not guarantee specific financial ROI or lead counts."
         ]
 
-        # 7. Assemble Complete Strategy Report (FR7)
+        # 8. Assemble Complete Strategy Report (FR7)
         report = ComprehensiveStrategyReport(
             run_id=run_id,
             organization_id=organization_id,
@@ -189,11 +207,11 @@ class AnalysisOrchestrator:
             budget=budget_result,
             caveats=caveats,
             source_citations=citations,
-            evaluation_status="Not yet empirically validated",
+            evaluation_status="Research Prototype - Empirical Field Evaluation Pending",
             integration_schema_version="v1.0-SL-2026"
         )
 
-        # 8. Persist Run and Entities in Database
+        # 9. Persist Run and Entities in Database
         db.insert("analysis_runs", {
             "id": run_id,
             "organization_id": organization_id,
@@ -217,10 +235,14 @@ class AnalysisOrchestrator:
             "action": "RUN_MARKETING_ANALYSIS",
             "resource_type": "analysis_run",
             "resource_id": run_id,
-            "details": {"product": p_name, "provenance": provenance.value}
+            "details": {
+                "product": p_name,
+                "provenance": provenance.value,
+                "rag_citations": [c["id"] for c in citations]
+            }
         })
 
-        logger.info(f"Analysis run {run_id} completed and persisted successfully.")
+        logger.info(f"Standardized analysis run {run_id} completed and persisted successfully.")
         return report
 
 

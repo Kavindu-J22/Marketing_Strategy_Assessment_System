@@ -12,6 +12,7 @@ from app.api.v1.budget import router as budget_router
 from app.api.v1.analysis import router as analysis_router
 from app.api.v1.research import router as research_router
 from app.api.v1.integrations import router as integrations_router
+from app.api.v1.knowledge import router as knowledge_router
 
 api_router = APIRouter()
 
@@ -25,3 +26,4 @@ api_router.include_router(budget_router)
 api_router.include_router(analysis_router)
 api_router.include_router(research_router)
 api_router.include_router(integrations_router)
+api_router.include_router(knowledge_router)

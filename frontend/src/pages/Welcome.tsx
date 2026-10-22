@@ -106,10 +106,10 @@ export const Welcome: React.FC = () => {
                 </Typography>
               </Box>
               <Typography variant="body2" sx={{ color: '#94a3b8', mb: 2 }}>
-                Server-side Google Gemini inference service converting complex engineering features into tailored customer benefit statements with strict guardrails and non-AI template fallbacks.
+                Server-side OpenAI structured generation service converting complex engineering features into tailored customer benefit statements with Pinecone RAG grounding and non-AI template fallbacks.
               </Typography>
-              <Chip label="Google Gemini 2.5 Flash" size="small" color="secondary" sx={{ mr: 1 }} />
-              <Chip label="Factual Faithfulness Guardrails" size="small" sx={{ bgcolor: 'rgba(255,255,255,0.06)' }} />
+              <Chip label="OpenAI Responses API" size="small" color="secondary" sx={{ mr: 1 }} />
+              <Chip label="Pinecone 3072d RAG" size="small" sx={{ bgcolor: 'rgba(255,255,255,0.06)' }} />
             </CardContent>
           </Card>
         </Grid>

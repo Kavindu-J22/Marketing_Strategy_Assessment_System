@@ -44,6 +44,10 @@ class AudienceClassifierService:
         weights_path = os.path.join(self.artifacts_dir, "fusion_model.pt")
         if os.path.exists(prep_path) and os.path.exists(weights_path):
             try:
+                import sys
+                workspace_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+                if workspace_root not in sys.path:
+                    sys.path.insert(0, workspace_root)
                 import torch
                 import torch.nn as nn
                 from ml.training.train_fusion import MultimodalFusionNet
