@@ -176,40 +176,42 @@ export const StrategyReport: React.FC = () => {
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto', py: 4, px: 3 }}>
       {/* Top Controls & Meta */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'center' }, mb: 4, gap: 2 }}>
         <Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-            <Typography variant="h4" sx={{ fontWeight: 800, color: '#f1f5f9' }}>
-              Strategic Marketing Strategy Report
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em' }}>
+              Strategic Marketing Assessment Report
             </Typography>
             <Chip
               label={report.status.toUpperCase()}
-              color="success"
               size="small"
-              sx={{ fontWeight: 700, fontSize: '0.75rem' }}
+              sx={{ fontWeight: 700, fontSize: '0.72rem', bgcolor: '#dcfce7', color: '#15803d', border: '1px solid #bbf7d0' }}
             />
           </Box>
-          <Typography variant="body2" sx={{ color: '#94a3b8' }}>
-            Product: <strong>{input_summary?.product_name}</strong> | Industry:{' '}
-            <strong>{input_summary?.industry}</strong> | Generated:{' '}
+          <Typography variant="body2" sx={{ color: '#64748b' }}>
+            Product: <strong style={{ color: '#0f172a' }}>{input_summary?.product_name}</strong> | Industry:{' '}
+            <strong style={{ color: '#0f172a' }}>{input_summary?.industry}</strong> | Generated:{' '}
             {new Date(report.created_at).toLocaleString()}
           </Typography>
         </Box>
 
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
           <Button
             size="small"
             variant="outlined"
             startIcon={<Download size={15} />}
             onClick={handleExportJSON}
+            sx={{ borderRadius: 9999, borderColor: '#e2e8f0', color: '#475569', fontWeight: 600, bgcolor: '#ffffff' }}
           >
             Export JSON
           </Button>
           <Button
             size="small"
-            variant="outlined"
-            startIcon={<Download size={15} />}
+            variant="contained"
+            color="secondary"
+            startIcon={<Download size={15} color="#14532d" />}
             onClick={handleExportCSV}
+            sx={{ borderRadius: 9999, bgcolor: '#bef264', color: '#14532d', fontWeight: 700, '&:hover': { bgcolor: '#a3e635' } }}
           >
             Export CSV
           </Button>
@@ -218,6 +220,7 @@ export const StrategyReport: React.FC = () => {
             variant="outlined"
             startIcon={<Printer size={15} />}
             onClick={handlePrint}
+            sx={{ borderRadius: 9999, borderColor: '#e2e8f0', color: '#475569', fontWeight: 600, bgcolor: '#ffffff' }}
           >
             Print Report
           </Button>
@@ -227,6 +230,7 @@ export const StrategyReport: React.FC = () => {
             color="primary"
             startIcon={<Sparkles size={15} />}
             onClick={() => navigate('/wizard')}
+            sx={{ borderRadius: 9999, bgcolor: '#0f172a', color: '#ffffff', fontWeight: 700 }}
           >
             Rerun Assessment
           </Button>
@@ -238,17 +242,17 @@ export const StrategyReport: React.FC = () => {
         <Chip
           label="Data Provenance: 100% Synthetic Demo"
           size="small"
-          sx={{ bgcolor: 'rgba(245, 158, 11, 0.15)', color: '#fbbf24', border: '1px solid #78350f' }}
+          sx={{ bgcolor: '#fef3c7', color: '#b45309', border: '1px solid #fde68a', fontWeight: 600 }}
         />
         <Chip
-          label="Validation Status: Not yet empirically validated"
+          label="Validation Status: Research Simulation"
           size="small"
-          sx={{ bgcolor: 'rgba(239, 68, 68, 0.15)', color: '#f87171', border: '1px solid #7f1d1d' }}
+          sx={{ bgcolor: '#fee2e2', color: '#b91c1c', border: '1px solid #fecaca', fontWeight: 600 }}
         />
         <Chip
           label="Integration Schema: v1.0-SL-2026"
           size="small"
-          sx={{ bgcolor: 'rgba(13, 148, 136, 0.15)', color: '#14b8a6', border: '1px solid #0f766e' }}
+          sx={{ bgcolor: '#f1f5f9', color: '#475569', border: '1px solid #e2e8f0', fontWeight: 600 }}
         />
       </Box>
 
@@ -256,13 +260,15 @@ export const StrategyReport: React.FC = () => {
       <Grid container spacing={3} sx={{ mb: 4 }}>
         {/* CARD 1: AUDIENCE TECHNICAL LITERACY (FR3) */}
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ height: '100%' }}>
-            <CardContent sx={{ p: 3 }}>
+          <Card sx={{ height: '100%', borderRadius: '24px', border: '1px solid #eef2f6', bgcolor: '#ffffff' }}>
+            <CardContent sx={{ p: 3.5 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Cpu color="#14b8a6" size={20} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
-                    Audience Intelligence & Literacy (FR3)
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <Box sx={{ width: 36, height: 36, borderRadius: '50%', bgcolor: '#f0fdf4', border: '1px solid #dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Cpu color="#15803d" size={18} />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#0f172a', fontSize: '1.05rem' }}>
+                    Audience Literacy (FR3)
                   </Typography>
                 </Box>
                 <Chip
@@ -270,39 +276,40 @@ export const StrategyReport: React.FC = () => {
                   sx={{
                     bgcolor:
                       audience.predicted_class === 'High'
-                        ? 'rgba(16, 185, 129, 0.2)'
+                        ? '#dcfce7'
                         : audience.predicted_class === 'Low'
-                        ? 'rgba(239, 68, 68, 0.2)'
-                        : 'rgba(245, 158, 11, 0.2)',
+                        ? '#fee2e2'
+                        : '#fef3c7',
                     color:
                       audience.predicted_class === 'High'
-                        ? '#34d399'
+                        ? '#15803d'
                         : audience.predicted_class === 'Low'
-                        ? '#f87171'
-                        : '#fbbf24',
+                        ? '#b91c1c'
+                        : '#b45309',
                     fontWeight: 700,
+                    borderRadius: 9999,
                   }}
                 />
               </Box>
 
-              <Typography variant="body2" sx={{ color: '#94a3b8', mb: 2 }}>
-                Model: <strong>{audience.model_type}</strong> ({audience.model_version})
+              <Typography variant="body2" sx={{ color: '#64748b', mb: 2 }}>
+                Model: <strong style={{ color: '#0f172a' }}>{audience.model_type}</strong> ({audience.model_version})
               </Typography>
 
               {/* Confidence Score Bar */}
               <Box sx={{ mb: 2.5 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                  <Typography variant="caption" sx={{ color: '#cbd5e1' }}>
+                  <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 600 }}>
                     Classification Confidence
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#14b8a6', fontWeight: 700 }}>
+                  <Typography variant="caption" sx={{ color: '#0f172a', fontWeight: 800 }}>
                     {(audience.confidence_score * 100).toFixed(1)}%
                   </Typography>
                 </Box>
                 <LinearProgress
                   variant="determinate"
                   value={audience.confidence_score * 100}
-                  sx={{ height: 8, borderRadius: 4, bgcolor: 'rgba(255,255,255,0.08)' }}
+                  sx={{ height: 8, borderRadius: 9999, bgcolor: '#f1f5f9', '& .MuiLinearProgress-bar': { bgcolor: '#10b981' } }}
                 />
               </Box>
 
@@ -310,11 +317,11 @@ export const StrategyReport: React.FC = () => {
               <Grid container spacing={1} sx={{ mb: 2.5 }}>
                 {Object.entries(audience.probabilities || {}).map(([cls, prob]) => (
                   <Grid size={{ xs: 4 }} key={cls}>
-                    <Box sx={{ bgcolor: 'rgba(0,0,0,0.25)', p: 1, borderRadius: 1.5, textAlign: 'center' }}>
-                      <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
+                    <Box sx={{ bgcolor: '#f8fafc', border: '1px solid #eef2f6', p: 1.2, borderRadius: '14px', textAlign: 'center' }}>
+                      <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', fontWeight: 600 }}>
                         {cls}
                       </Typography>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#0f172a' }}>
                         {(prob * 100).toFixed(1)}%
                       </Typography>
                     </Box>
@@ -323,7 +330,7 @@ export const StrategyReport: React.FC = () => {
               </Grid>
 
               {/* Uncertainty Caveat */}
-              <Alert severity="info" sx={{ bgcolor: 'rgba(6, 182, 212, 0.1)', color: '#67e8f9', mb: 2 }}>
+              <Alert severity="info" sx={{ bgcolor: '#f0f9ff', color: '#0369a1', mb: 2, borderRadius: '14px', border: '1px solid #bae6fd' }}>
                 <Typography variant="caption">
                   <strong>Uncertainty Note:</strong> {audience.uncertainty_caveat}
                 </Typography>
@@ -332,10 +339,10 @@ export const StrategyReport: React.FC = () => {
               {/* Reason Codes */}
               {audience.reason_codes?.length > 0 && (
                 <Box>
-                  <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 600, display: 'block', mb: 0.5 }}>
+                  <Typography variant="caption" sx={{ color: '#94a3b8', fontWeight: 700, display: 'block', mb: 0.5 }}>
                     TRANSPARENT REASON CODES:
                   </Typography>
-                  <ul style={{ margin: 0, paddingLeft: 18, color: '#cbd5e1', fontSize: '0.8rem' }}>
+                  <ul style={{ margin: 0, paddingLeft: 18, color: '#475569', fontSize: '0.8rem' }}>
                     {audience.reason_codes.map((rc, i) => (
                       <li key={i}>{rc}</li>
                     ))}
@@ -348,29 +355,30 @@ export const StrategyReport: React.FC = () => {
 
         {/* CARD 2: FEATURE-TO-VALUE MESSAGING (FR4) */}
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ height: '100%' }}>
-            <CardContent sx={{ p: 3 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Sparkles color="#38bdf8" size={20} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
-                    Feature-to-Value Messaging (FR4)
+          <Card sx={{ height: '100%', borderRadius: '24px', border: '1px solid #eef2f6', bgcolor: '#ffffff' }}>
+            <CardContent sx={{ p: 3.5 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <Box sx={{ width: 36, height: 36, borderRadius: '50%', bgcolor: '#f8fafc', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Sparkles color="#0f172a" size={18} />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#0f172a', fontSize: '1.05rem' }}>
+                    Value Messaging (FR4)
                   </Typography>
                 </Box>
                 <Chip
                   label={feature_value_messages.generation_model}
                   size="small"
-                  variant="outlined"
-                  sx={{ color: '#38bdf8', borderColor: '#0284c7', fontSize: '0.7rem' }}
+                  sx={{ bgcolor: '#f1f5f9', color: '#475569', fontWeight: 600, fontSize: '0.7rem' }}
                 />
               </Box>
 
               {/* Core Value Proposition Box */}
-              <Box sx={{ bgcolor: 'rgba(2, 132, 199, 0.15)', p: 2, borderRadius: 2, mb: 2 }}>
-                <Typography variant="caption" sx={{ color: '#38bdf8', fontWeight: 700, display: 'block' }}>
+              <Box sx={{ bgcolor: '#f7fee7', border: '1px solid #d9f99d', p: 2, borderRadius: '16px', mb: 2 }}>
+                <Typography variant="caption" sx={{ color: '#15803d', fontWeight: 800, display: 'block' }}>
                   CORE VALUE PROPOSITION:
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#f0f9ff', fontWeight: 600, mt: 0.5 }}>
+                <Typography variant="body1" sx={{ color: '#14532d', fontWeight: 700, mt: 0.5, fontStyle: 'italic' }}>
                   "{feature_value_messages.core_value_proposition}"
                 </Typography>
               </Box>
@@ -379,15 +387,15 @@ export const StrategyReport: React.FC = () => {
               <Tabs
                 value={msgTab}
                 onChange={(_, v) => setMsgTab(v)}
-                sx={{ mb: 2, minHeight: 36, '& .MuiTab-root': { py: 0.5, fontSize: '0.8rem' } }}
+                sx={{ mb: 2, minHeight: 36, '& .MuiTab-root': { py: 0.5, fontSize: '0.8rem', fontWeight: 600, textTransform: 'none' } }}
               >
                 <Tab label="Simple Copy" />
                 <Tab label="Balanced Copy" />
                 <Tab label="Technical Copy" />
               </Tabs>
 
-              <Box sx={{ bgcolor: 'rgba(0,0,0,0.25)', p: 2, borderRadius: 2, minHeight: 90, mb: 2 }}>
-                <Typography variant="body2" sx={{ color: '#e2e8f0', lineHeight: 1.6 }}>
+              <Box sx={{ bgcolor: '#f8fafc', border: '1px solid #eef2f6', p: 2, borderRadius: '16px', minHeight: 90, mb: 2 }}>
+                <Typography variant="body2" sx={{ color: '#334155', lineHeight: 1.6 }}>
                   {msgTab === 0
                     ? feature_value_messages.simple_message
                     : msgTab === 1
@@ -398,24 +406,24 @@ export const StrategyReport: React.FC = () => {
 
               <Grid container spacing={2} sx={{ mb: 2 }}>
                 <Grid size={{ xs: 6 }}>
-                  <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', fontWeight: 700 }}>
                     HEADLINE:
                   </Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#f1f5f9' }}>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#0f172a' }}>
                     {feature_value_messages.short_headline}
                   </Typography>
                 </Grid>
                 <Grid size={{ xs: 6 }}>
-                  <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', fontWeight: 700 }}>
                     RECOMMENDED CTA:
                   </Typography>
-                  <Chip label={feature_value_messages.cta} size="small" color="primary" sx={{ mt: 0.5 }} />
+                  <Chip label={feature_value_messages.cta} size="small" sx={{ mt: 0.5, bgcolor: '#0f172a', color: '#ffffff', fontWeight: 600 }} />
                 </Grid>
               </Grid>
 
               {/* Claim Warnings */}
               {feature_value_messages.claim_warnings?.length > 0 && (
-                <Alert severity="warning" sx={{ py: 0.5, fontSize: '0.75rem' }}>
+                <Alert severity="warning" sx={{ py: 0.5, fontSize: '0.75rem', borderRadius: '12px' }}>
                   <strong>Claim Verification:</strong> {feature_value_messages.claim_warnings[0]}
                 </Alert>
               )}
@@ -425,19 +433,21 @@ export const StrategyReport: React.FC = () => {
 
         {/* CARD 3: AHP CHANNEL RANKING (FR5) */}
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ height: '100%' }}>
-            <CardContent sx={{ p: 3 }}>
+          <Card sx={{ height: '100%', borderRadius: '24px', border: '1px solid #eef2f6', bgcolor: '#ffffff' }}>
+            <CardContent sx={{ p: 3.5 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Layers color="#f59e0b" size={20} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
-                    AHP Channel Recommendations (FR5)
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <Box sx={{ width: 36, height: 36, borderRadius: '50%', bgcolor: '#fef3c7', border: '1px solid #fde68a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Layers color="#b45309" size={18} />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#0f172a', fontSize: '1.05rem' }}>
+                    AHP Channel Priorities (FR5)
                   </Typography>
                 </Box>
                 <Chip
                   label={`CR: ${channels.consistency_ratio.toFixed(3)} (Consistent)`}
                   size="small"
-                  sx={{ bgcolor: 'rgba(16, 185, 129, 0.2)', color: '#34d399', fontWeight: 600 }}
+                  sx={{ bgcolor: '#dcfce7', color: '#15803d', fontWeight: 700, borderRadius: 9999 }}
                 />
               </Box>
 
@@ -445,10 +455,10 @@ export const StrategyReport: React.FC = () => {
               <Box sx={{ height: 180, mb: 2 }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={channelBarData} layout="vertical" margin={{ left: 20, right: 20, top: 5, bottom: 5 }}>
-                    <XAxis type="number" domain={[0, 100]} stroke="#64748b" />
-                    <YAxis dataKey="name" type="category" stroke="#94a3b8" width={90} tick={{ fontSize: 11 }} />
-                    <RechartsTooltip contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #334155' }} />
-                    <Bar dataKey="score" fill="#0d9488" radius={[0, 4, 4, 0]} name="AHP Score" />
+                    <XAxis type="number" domain={[0, 100]} stroke="#94a3b8" />
+                    <YAxis dataKey="name" type="category" stroke="#64748b" width={90} tick={{ fontSize: 11 }} />
+                    <RechartsTooltip contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', color: '#0f172a' }} />
+                    <Bar dataKey="score" fill="#0f172a" radius={[0, 6, 6, 0]} name="AHP Score" />
                   </BarChart>
                 </ResponsiveContainer>
               </Box>
@@ -458,30 +468,30 @@ export const StrategyReport: React.FC = () => {
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell sx={{ color: '#94a3b8' }}>RANK</TableCell>
-                      <TableCell sx={{ color: '#94a3b8' }}>CHANNEL</TableCell>
-                      <TableCell sx={{ color: '#94a3b8' }}>SCORE</TableCell>
-                      <TableCell sx={{ color: '#94a3b8' }}>SL REACH</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>RANK</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>CHANNEL</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>SCORE</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>SL REACH</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {channels.ranked_channels.slice(0, 4).map((ch) => (
                       <TableRow key={ch.channel_id} hover>
-                        <TableCell sx={{ fontWeight: 700, color: ch.is_recommended ? '#14b8a6' : '#94a3b8' }}>
+                        <TableCell sx={{ fontWeight: 800, color: ch.is_recommended ? '#15803d' : '#64748b' }}>
                           #{ch.rank}
                         </TableCell>
-                        <TableCell sx={{ color: '#f1f5f9', fontWeight: 600 }}>
-                          {ch.channel_name} {ch.is_recommended && <Chip label="Recommended" size="small" color="primary" sx={{ ml: 1, height: 18, fontSize: '0.65rem' }} />}
+                        <TableCell sx={{ color: '#0f172a', fontWeight: 600 }}>
+                          {ch.channel_name} {ch.is_recommended && <Chip label="Recommended" size="small" sx={{ ml: 1, height: 18, fontSize: '0.65rem', bgcolor: '#dcfce7', color: '#15803d', fontWeight: 700 }} />}
                         </TableCell>
-                        <TableCell sx={{ color: '#f1f5f9' }}>{ch.score_0to100.toFixed(1)}/100</TableCell>
-                        <TableCell sx={{ color: '#94a3b8' }}>{(ch.sri_lanka_reach_rate * 100).toFixed(0)}%</TableCell>
+                        <TableCell sx={{ color: '#0f172a', fontWeight: 700 }}>{ch.score_0to100.toFixed(1)}/100</TableCell>
+                        <TableCell sx={{ color: '#64748b' }}>{(ch.sri_lanka_reach_rate * 100).toFixed(0)}%</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
                 </Table>
               </TableContainer>
 
-              <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mt: 1.5 }}>
+              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mt: 1.5 }}>
                 {channels.method_disclaimer}
               </Typography>
             </CardContent>
@@ -490,82 +500,61 @@ export const StrategyReport: React.FC = () => {
 
         {/* CARD 4: CONSTRAINT-AWARE BUDGET ALLOCATION (FR6) */}
         <Grid size={{ xs: 12, md: 6 }}>
-          <Card sx={{ height: '100%' }}>
-            <CardContent sx={{ p: 3 }}>
+          <Card sx={{ height: '100%', borderRadius: '24px', border: '1px solid #eef2f6', bgcolor: '#ffffff' }}>
+            <CardContent sx={{ p: 3.5 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <DollarSign color="#10b981" size={20} />
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
-                    Constraint-Aware Budget Allocation (FR6)
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <Box sx={{ width: 36, height: 36, borderRadius: '50%', bgcolor: '#dcfce7', border: '1px solid #bbf7d0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <DollarSign color="#15803d" size={18} />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#0f172a', fontSize: '1.05rem' }}>
+                    Budget Optimization (FR6)
                   </Typography>
                 </Box>
                 <Chip
-                  label="100% Exact Sum Verified"
+                  label="100% Exact LKR Sum"
                   size="small"
-                  sx={{ bgcolor: 'rgba(16, 185, 129, 0.2)', color: '#34d399', fontWeight: 600 }}
+                  sx={{ bgcolor: '#dcfce7', color: '#15803d', fontWeight: 700, borderRadius: 9999 }}
                 />
               </Box>
 
               {/* Totals Header */}
               <Grid container spacing={2} sx={{ mb: 2 }}>
                 <Grid size={{ xs: 4 }}>
-                  <Typography variant="caption" sx={{ color: '#94a3b8' }}>
-                    MONTHLY BUDGET:
+                  <Typography variant="caption" sx={{ color: '#94a3b8', fontWeight: 700 }}>
+                    MONTHLY:
                   </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#0f172a' }}>
                     LKR {(budget.monthly_budget_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
                 <Grid size={{ xs: 4 }}>
-                  <Typography variant="caption" sx={{ color: '#94a3b8' }}>
-                    CAMPAIGN TOTAL ({budget.campaign_months ?? 1} mo):
+                  <Typography variant="caption" sx={{ color: '#94a3b8', fontWeight: 700 }}>
+                    TOTAL ({budget.campaign_months ?? 1} mo):
                   </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#38bdf8' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#0284c7' }}>
                     LKR {(budget.total_budget_lkr ?? budget.total_campaign_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
                 <Grid size={{ xs: 4 }}>
-                  <Typography variant="caption" sx={{ color: '#94a3b8' }}>
-                    CONTINGENCY RESERVE:
+                  <Typography variant="caption" sx={{ color: '#94a3b8', fontWeight: 700 }}>
+                    RESERVE:
                   </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 700, color: '#fbbf24' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, color: '#d97706' }}>
                     LKR {(budget.reserve_monthly_lkr ?? 0).toLocaleString()}
                   </Typography>
                 </Grid>
               </Grid>
-
-              {/* Pie Chart of Allocations */}
-              <Box sx={{ height: 170, mb: 1 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={budgetPieData}
-                      dataKey="value"
-                      nameKey="name"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={65}
-                      innerRadius={38}
-                    >
-                      {budgetPieData.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <RechartsTooltip formatter={(val: number) => `LKR ${val.toLocaleString()}`} />
-                    <Legend wrapperStyle={{ fontSize: 11 }} />
-                  </PieChart>
-                </ResponsiveContainer>
-              </Box>
 
               {/* Allocations Table vs Equal Baseline */}
               <TableContainer component={Paper} elevation={0} sx={{ bgcolor: 'transparent' }}>
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell sx={{ color: '#94a3b8' }}>CHANNEL</TableCell>
-                      <TableCell sx={{ color: '#94a3b8' }}>PROPOSED (MO)</TableCell>
-                      <TableCell sx={{ color: '#94a3b8' }}>EQUAL BASELINE</TableCell>
-                      <TableCell sx={{ color: '#94a3b8' }}>SHARE</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>CHANNEL</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>ALLOCATION</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>EQUAL SPLIT</TableCell>
+                      <TableCell sx={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.72rem' }}>SHARE</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -573,14 +562,14 @@ export const StrategyReport: React.FC = () => {
                       const eq = budget.baseline_equal_allocations?.[idx];
                       return (
                         <TableRow key={a.channel_id || a.channel_name} hover>
-                          <TableCell sx={{ color: '#f1f5f9', fontWeight: 600 }}>{a.channel_name}</TableCell>
-                          <TableCell sx={{ color: '#10b981', fontWeight: 700 }}>
+                          <TableCell sx={{ color: '#0f172a', fontWeight: 700 }}>{a.channel_name}</TableCell>
+                          <TableCell sx={{ color: '#15803d', fontWeight: 800 }}>
                             LKR {(a.monthly_lkr ?? 0).toLocaleString()}
                           </TableCell>
-                          <TableCell sx={{ color: '#94a3b8' }}>
+                          <TableCell sx={{ color: '#64748b' }}>
                             LKR {(eq?.monthly_lkr || Math.round((budget.monthly_budget_lkr ?? 0) / (budget.allocations?.length || 1))).toLocaleString()}
                           </TableCell>
-                          <TableCell sx={{ color: '#cbd5e1' }}>{(a.percentage ?? 0).toFixed(1)}%</TableCell>
+                          <TableCell sx={{ color: '#0f172a', fontWeight: 700 }}>{(a.percentage ?? 0).toFixed(1)}%</TableCell>
                         </TableRow>
                       );
                     })}
@@ -588,7 +577,7 @@ export const StrategyReport: React.FC = () => {
                 </Table>
               </TableContainer>
 
-              <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mt: 1 }}>
+              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mt: 1 }}>
                 {budget.method_disclaimer}
               </Typography>
             </CardContent>
@@ -596,20 +585,20 @@ export const StrategyReport: React.FC = () => {
         </Grid>
       </Grid>
 
-      {/* SOURCED EVIDENCE & KNOWLEDGE REGISTRY (Section 10) */}
-      <Card sx={{ mb: 4 }}>
-        <CardContent sx={{ p: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9', mb: 2 }}>
+      {/* SOURCED EVIDENCE & KNOWLEDGE REGISTRY */}
+      <Card sx={{ mb: 4, borderRadius: '24px', border: '1px solid #eef2f6', bgcolor: '#ffffff' }}>
+        <CardContent sx={{ p: 3.5 }}>
+          <Typography variant="h6" sx={{ fontWeight: 800, color: '#0f172a', mb: 2 }}>
             Sourced Market Knowledge & Citations (Sri Lankan Digital Context)
           </Typography>
           <Grid container spacing={2}>
             {report.source_citations?.map((cit, idx) => (
               <Grid size={{ xs: 12, md: 6 }} key={idx}>
-                <Box sx={{ p: 2, bgcolor: 'rgba(0,0,0,0.2)', borderRadius: 2, border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 600, color: '#38bdf8' }}>
+                <Box sx={{ p: 2, bgcolor: '#f8fafc', borderRadius: '16px', border: '1px solid #eef2f6' }}>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a' }}>
                     {cit.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#94a3b8', mt: 0.5 }}>
+                  <Typography variant="body2" sx={{ color: '#64748b', mt: 0.5, fontSize: '0.85rem' }}>
                     {cit.note}
                   </Typography>
                 </Box>
@@ -620,22 +609,23 @@ export const StrategyReport: React.FC = () => {
       </Card>
 
       {/* Action Footer */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Button variant="outlined" onClick={() => navigate('/campaigns')}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
+        <Button variant="outlined" onClick={() => navigate('/campaigns')} sx={{ borderRadius: 9999, borderColor: '#e2e8f0', color: '#475569' }}>
           View Analysis History
         </Button>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
             variant="outlined"
-            color="secondary"
             onClick={() => navigate('/usability/sus')}
+            sx={{ borderRadius: 9999, borderColor: '#e2e8f0', color: '#475569' }}
           >
             Submit Usability Feedback (SUS)
           </Button>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={() => navigate('/wizard')}
+            sx={{ borderRadius: 9999, bgcolor: '#bef264', color: '#14532d', fontWeight: 700, '&:hover': { bgcolor: '#a3e635' } }}
           >
             Start Another Assessment
           </Button>

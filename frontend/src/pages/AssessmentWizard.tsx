@@ -363,10 +363,10 @@ export const AssessmentWizard: React.FC = () => {
     <Box sx={{ maxWidth: 900, mx: 'auto', py: 4, px: 3 }}>
       {/* Stepper Header */}
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, color: '#f1f5f9', mb: 1 }}>
+        <Typography variant="h4" sx={{ fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em', mb: 1 }}>
           Marketing Strategy Assessment Wizard
         </Typography>
-        <Typography variant="body2" sx={{ color: '#94a3b8', mb: 3 }}>
+        <Typography variant="body2" sx={{ color: '#64748b', mb: 3 }}>
           Preserves Questionary Final.docx semantics (Q1–Q21) with research-grade AI & decision support.
         </Typography>
         <Stepper activeStep={activeStep} alternativeLabel>
@@ -1030,6 +1030,7 @@ export const AssessmentWizard: React.FC = () => {
           disabled={activeStep === 0 || submitting}
           startIcon={<ArrowLeft size={16} />}
           onClick={handleBack}
+          sx={{ borderRadius: 9999, borderColor: '#e2e8f0', color: '#475569', fontWeight: 600, bgcolor: '#ffffff' }}
         >
           Previous
         </Button>
@@ -1037,21 +1038,22 @@ export const AssessmentWizard: React.FC = () => {
         {activeStep < 5 ? (
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             endIcon={<ArrowRight size={16} />}
             onClick={handleNext}
+            sx={{ borderRadius: 9999, bgcolor: '#bef264', color: '#14532d', fontWeight: 700, px: 3, '&:hover': { bgcolor: '#a3e635' } }}
           >
             Next Step
           </Button>
         ) : (
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="large"
             disabled={submitting}
             startIcon={submitting ? <CircularProgress size={18} color="inherit" /> : <Sparkles size={18} />}
             onClick={handleSubmitAnalysis}
-            sx={{ px: 4, py: 1.25 }}
+            sx={{ borderRadius: 9999, bgcolor: '#bef264', color: '#14532d', fontWeight: 800, px: 4, py: 1.25, '&:hover': { bgcolor: '#a3e635' } }}
           >
             {submitting ? 'Orchestrating Assessment...' : 'Run Strategy Assessment'}
           </Button>
