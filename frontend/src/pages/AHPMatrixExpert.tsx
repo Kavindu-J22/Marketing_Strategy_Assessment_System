@@ -193,12 +193,12 @@ export const AHPMatrixExpert: React.FC = () => {
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-          <Layers size={28} color="#14b8a6" />
-          <Typography variant="h4" fontWeight={700}>
+          <Layers size={28} color="#0f172a" />
+          <Typography variant="h4" sx={{ fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em' }}>
             AHP Multi-Criteria Expert Matrix
           </Typography>
         </Box>
-        <Typography variant="body1" sx={{ color: '#94a3b8', maxWidth: 900 }}>
+        <Typography variant="body1" sx={{ color: '#64748b', maxWidth: 900, fontSize: '0.925rem' }}>
           Interactive Saaty 1–9 pairwise comparison matrix for evaluating Sri Lankan marketing channel criteria (Q15–Q17).
           Calculates principal eigenvector weights, maximum eigenvalue (λ_max), and enforces Saaty's consistency constraint (CR ≤ 0.10).
         </Typography>
@@ -262,10 +262,10 @@ export const AHPMatrixExpert: React.FC = () => {
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                 <Box>
-                  <Typography variant="h6" fontWeight={700}>
+                  <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff' }}>
                     Saaty 5×5 Reciprocal Comparison Matrix
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#64748b' }}>
+                  <Typography variant="caption" sx={{ color: '#94a3b8' }}>
                     A_ji is automatically computed as 1 / A_ij (Reciprocal Axiom). Select importance of row relative to column.
                   </Typography>
                 </Box>
@@ -299,10 +299,10 @@ export const AHPMatrixExpert: React.FC = () => {
                     {CRITERIA.map((rowCrit, i) => (
                       <TableRow key={rowCrit.code} hover>
                         <TableCell sx={{ color: '#f1f5f9', fontWeight: 600 }}>
-                          <Typography variant="body2" fontWeight={600}>
+                          <Typography variant="body2" fontWeight={600} sx={{ color: '#ffffff' }}>
                             {rowCrit.name}
                           </Typography>
-                          <Typography variant="caption" sx={{ color: '#64748b' }}>
+                          <Typography variant="caption" sx={{ color: '#94a3b8' }}>
                             {rowCrit.code}
                           </Typography>
                         </TableCell>
@@ -388,10 +388,10 @@ export const AHPMatrixExpert: React.FC = () => {
             {/* Derived Weights Bar Chart */}
             <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
               <CardContent>
-                <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
+                <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff', mb: 1 }}>
                   Derived Criteria Priority (w_i)
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mb: 2 }}>
+                <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 2 }}>
                   Sum of priority weights = 100.0%
                 </Typography>
 
@@ -421,7 +421,7 @@ export const AHPMatrixExpert: React.FC = () => {
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                   <Scale size={20} color="#14b8a6" />
-                  <Typography variant="h6" fontWeight={700}>
+                  <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff' }}>
                     Spectral &amp; Consistency Metrics
                   </Typography>
                 </Box>
@@ -452,7 +452,7 @@ export const AHPMatrixExpert: React.FC = () => {
                 </Box>
 
                 <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <Typography variant="caption" sx={{ color: '#64748b', display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                  <Typography variant="caption" sx={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: 0.5 }}>
                     <Info size={12} /> Saaty (1980): CI = (λ_max - n) / (n - 1); CR = CI / RI.
                   </Typography>
                 </Box>
