@@ -161,11 +161,25 @@ export const api = {
     return res.data;
   },
 
-  // Consulting Framework Summary
+  // Consulting Framework Summary & Integration Health
   getFrameworkSummary: async (productId: string, organizationId?: string) => {
     const res = await apiClient.get('/integrations/summary', {
       params: { product_id: productId, organization_id: organizationId },
     });
+    return res.data;
+  },
+  getIntegrationsHealth: async () => {
+    const res = await apiClient.get('/integrations/health');
+    return res.data;
+  },
+
+  // Knowledge Base & RAG Retrieval
+  searchKnowledge: async (query: string, top_k = 4) => {
+    const res = await apiClient.post('/knowledge/search', { query, top_k });
+    return res.data;
+  },
+  getKnowledgeSources: async () => {
+    const res = await apiClient.get('/knowledge/sources');
     return res.data;
   },
 };
