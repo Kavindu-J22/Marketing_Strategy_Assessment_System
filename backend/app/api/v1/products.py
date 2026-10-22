@@ -1,30 +1,36 @@
 """
 Product and Organization Management Endpoints (FR1)
 """
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional, Union
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
 import uuid
+import datetime
 from app.core.security import get_current_user, AuthUser
 from app.core.database import db
-from app.schemas.common import IndustryEnum
 
 router = APIRouter(tags=["Products & Organizations"])
 
 
 class ProductCreate(BaseModel):
-    name: str = Field(..., min_length=2, max_length=150)
-    description: str = Field(..., min_length=10, max_length=3000)
-    industry: IndustryEnum
-    features: List[str] = Field(..., min_items=1)
-    problem_solved: str = Field(..., min_length=5, max_length=1000)
-    target_customer_summary: str = Field(..., min_length=5, max_length=500)
+    name: str = Field(..., min_length=1, max_length=150)
+    description: Optional[str] = Field(default="", max_length=3000)
+    industry: Optional[str] = Field(default="Software / SaaS")
+    features: Optional[List[str]] = Field(default_factory=lambda: ["Core capability"])
+    problem_solved: Optional[str] = Field(default="Eliminates manual bottlenecks and boosts operational efficiency")
+    target_customer_summary: Optional[str] = Field(default="Sri Lankan enterprise and SME decision makers")
 
 
-class ProductResponse(ProductCreate):
+class ProductResponse(BaseModel):
     id: str
     organization_id: str
-    created_at: str
+    name: str
+    description: Optional[str] = ""
+    industry: Optional[str] = "Software / SaaS"
+    features: Optional[List[str]] = []
+    problem_solved: Optional[str] = ""
+    target_customer_summary: Optional[str] = ""
+    created_at: Optional[str] = None
 
 
 @router.get("/organizations/current")
@@ -49,15 +55,19 @@ def list_products(current_user: AuthUser = Depends(get_current_user)):
 @router.post("/products", response_model=ProductResponse, status_code=status.HTTP_201_CREATED)
 def create_product(payload: ProductCreate, current_user: AuthUser = Depends(get_current_user)):
     prod_id = f"prod-{uuid.uuid4().hex[:10]}"
+    now_str = datetime.datetime.utcnow().isoformat()
+    industry_str = payload.industry.value if hasattr(payload.industry, "value") else str(payload.industry)
+
     new_product = {
         "id": prod_id,
         "organization_id": current_user.organization_id,
-        "name": payload.name,
-        "description": payload.description,
-        "industry": payload.industry.value,
-        "features": payload.features,
-        "problem_solved": payload.problem_solved,
-        "target_customer_summary": payload.target_customer_summary
+        "name": payload.name.strip(),
+        "description": (payload.description or "").strip() or f"{payload.name} - technology solution",
+        "industry": industry_str,
+        "features": [f.strip() for f in (payload.features or []) if f and f.strip()] or ["Core functionality"],
+        "problem_solved": (payload.problem_solved or "Operational efficiency").strip(),
+        "target_customer_summary": (payload.target_customer_summary or "Sri Lankan business clients").strip(),
+        "created_at": now_str
     }
     created = db.insert("products", new_product)
     return created
@@ -77,13 +87,15 @@ def update_product(product_id: str, payload: ProductCreate, current_user: AuthUs
     if not prod or prod.get("organization_id") != current_user.organization_id:
         raise HTTPException(status_code=404, detail="Product not found or access denied.")
     
+    industry_str = payload.industry.value if hasattr(payload.industry, "value") else str(payload.industry)
     updated = db.update("products", product_id, {
-        "name": payload.name,
-        "description": payload.description,
-        "industry": payload.industry.value,
-        "features": payload.features,
-        "problem_solved": payload.problem_solved,
-        "target_customer_summary": payload.target_customer_summary
+        "name": payload.name.strip(),
+        "description": (payload.description or "").strip(),
+        "industry": industry_str,
+        "features": [f.strip() for f in (payload.features or []) if f and f.strip()] or ["Core functionality"],
+        "problem_solved": (payload.problem_solved or "").strip(),
+        "target_customer_summary": (payload.target_customer_summary or "").strip(),
+        "created_at": prod.get("created_at") or datetime.datetime.utcnow().isoformat()
     })
     return updated
 

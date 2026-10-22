@@ -31,14 +31,14 @@ const queryClient = new QueryClient({
 });
 
 export const App: React.FC = () => {
-  const theme = getAppTheme('dark');
+  const theme = getAppTheme('light');
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%', bgcolor: '#0b0f19' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%', bgcolor: '#f8fafc' }}>
             {/* Top Navigation Bar */}
             <Navbar />
 
@@ -50,10 +50,10 @@ export const App: React.FC = () => {
                 component="main"
                 sx={{
                   flexGrow: 1,
-                  p: { xs: 2, md: 3 },
+                  p: { xs: 2.5, md: 4 },
                   overflowY: 'auto',
-                  height: 'calc(100vh - 64px - 32px)',
-                  bgcolor: '#0b0f19',
+                  height: 'calc(100vh - 64px)',
+                  bgcolor: '#f8fafc',
                 }}
               >
                 <Routes>

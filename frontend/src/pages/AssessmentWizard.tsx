@@ -363,16 +363,18 @@ export const AssessmentWizard: React.FC = () => {
     <Box sx={{ maxWidth: 900, mx: 'auto', py: 4, px: 3 }}>
       {/* Stepper Header */}
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, color: '#f1f5f9', mb: 1 }}>
+        <Typography variant="h4" sx={{ fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em', mb: 1 }}>
           Marketing Strategy Assessment Wizard
         </Typography>
-        <Typography variant="body2" sx={{ color: '#94a3b8', mb: 3 }}>
+        <Typography variant="body2" sx={{ color: '#64748b', mb: 3 }}>
           Preserves Questionary Final.docx semantics (Q1–Q21) with research-grade AI & decision support.
         </Typography>
         <Stepper activeStep={activeStep} alternativeLabel>
           {STEPS.map((label) => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel sx={{ '& .MuiStepLabel-label': { color: '#475569', fontWeight: 600 }, '& .MuiStepLabel-label.Mui-active': { color: '#0f172a', fontWeight: 700 } }}>
+                {label}
+              </StepLabel>
             </Step>
           ))}
         </Stepper>
@@ -389,10 +391,10 @@ export const AssessmentWizard: React.FC = () => {
         <Card sx={{ p: 2 }}>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#14b8a6', mb: 0.5 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#0f172a', mb: 0.5 }}>
                 Page 1 — Product & Service Information (FR1)
               </Typography>
-              <Typography variant="body2" sx={{ color: '#94a3b8' }}>
+              <Typography variant="body2" sx={{ color: '#475569' }}>
                 Define your technology solution, technical features, and industrial category.
               </Typography>
             </Box>
@@ -451,10 +453,10 @@ export const AssessmentWizard: React.FC = () => {
             />
 
             <Box>
-              <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
+              <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 700, color: '#0f172a' }}>
                 3. Main Features of Your Product (Q3)
               </Typography>
-              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 1.5 }}>
+              <Typography variant="caption" sx={{ color: '#475569', display: 'block', mb: 1.5 }}>
                 Enter repeatable, concrete technical capabilities (e.g. Real-time barcode inventory, Multi-branch sync).
               </Typography>
               <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
@@ -491,10 +493,10 @@ export const AssessmentWizard: React.FC = () => {
         <Card sx={{ p: 2 }}>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#14b8a6', mb: 0.5 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#0f172a', mb: 0.5 }}>
                 Page 2 — Target Customer Information (FR2)
               </Typography>
-              <Typography variant="body2" sx={{ color: '#94a3b8' }}>
+              <Typography variant="body2" sx={{ color: '#475569' }}>
                 Profile your target buyers and geographic deployment in Sri Lanka.
               </Typography>
             </Box>
@@ -511,7 +513,7 @@ export const AssessmentWizard: React.FC = () => {
             />
 
             <FormControl component="fieldset">
-              <FormLabel sx={{ color: '#cbd5e1', fontWeight: 600, mb: 0.5 }}>
+              <FormLabel sx={{ color: '#0f172a', fontWeight: 700, mb: 0.5 }}>
                 6. Is your target market B2B, B2C, or both? (Q6)
               </FormLabel>
               <RadioGroup
@@ -519,9 +521,9 @@ export const AssessmentWizard: React.FC = () => {
                 value={q6MarketType}
                 onChange={(e) => setQ6MarketType(e.target.value as any)}
               >
-                <FormControlLabel value="B2B" control={<Radio color="primary" />} label="B2B" />
-                <FormControlLabel value="B2C" control={<Radio color="primary" />} label="B2C" />
-                <FormControlLabel value="Both" control={<Radio color="primary" />} label="Both" />
+                <FormControlLabel value="B2B" control={<Radio color="primary" />} label="B2B" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }} />
+                <FormControlLabel value="B2C" control={<Radio color="primary" />} label="B2C" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }} />
+                <FormControlLabel value="Both" control={<Radio color="primary" />} label="Both" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }} />
               </RadioGroup>
             </FormControl>
 
@@ -560,7 +562,7 @@ export const AssessmentWizard: React.FC = () => {
             </Grid>
 
             <Box>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a', mb: 1 }}>
                 8. Typical Occupation or Role of Target Customer (Q8)
               </Typography>
               <FormGroup row>
@@ -578,6 +580,7 @@ export const AssessmentWizard: React.FC = () => {
                       />
                     }
                     label={role}
+                    sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                   />
                 ))}
               </FormGroup>
@@ -591,78 +594,78 @@ export const AssessmentWizard: React.FC = () => {
         <Card sx={{ p: 2 }}>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#14b8a6', mb: 0.5 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#0f172a', mb: 0.5 }}>
                 Page 3 — Technical Literacy & Preference (FR3)
               </Typography>
-              <Typography variant="body2" sx={{ color: '#94a3b8' }}>
+              <Typography variant="body2" sx={{ color: '#475569' }}>
                 5-point scale questions preserving exact Questionary Final.docx options.
               </Typography>
             </Box>
 
             {/* Q10 */}
             <FormControl component="fieldset">
-              <FormLabel sx={{ color: '#f1f5f9', fontWeight: 600, mb: 1 }}>
+              <FormLabel sx={{ color: '#0f172a', fontWeight: 700, mb: 1 }}>
                 10. How would you describe your target customer's comfort with technology?
               </FormLabel>
               <RadioGroup
                 value={q10Score}
                 onChange={(e) => setQ10Score(Number(e.target.value))}
               >
-                <FormControlLabel value={1} control={<Radio color="primary" />} label="1: Very low — Uncomfortable with technology" />
-                <FormControlLabel value={2} control={<Radio color="primary" />} label="2: Low — Uses basic tech but struggles with technical terms" />
-                <FormControlLabel value={3} control={<Radio color="primary" />} label="3: Medium — Comfortable with common digital applications" />
-                <FormControlLabel value={4} control={<Radio color="primary" />} label="4: High — Familiar with advanced digital tools and concepts" />
-                <FormControlLabel value={5} control={<Radio color="primary" />} label="5: Very high — Highly technical software professionals" />
+                <FormControlLabel value={1} control={<Radio color="primary" />} label="1: Very low — Uncomfortable with technology" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={2} control={<Radio color="primary" />} label="2: Low — Uses basic tech but struggles with technical terms" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={3} control={<Radio color="primary" />} label="3: Medium — Comfortable with common digital applications" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={4} control={<Radio color="primary" />} label="4: High — Familiar with advanced digital tools and concepts" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={5} control={<Radio color="primary" />} label="5: Very high — Highly technical software professionals" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
               </RadioGroup>
             </FormControl>
 
-            <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
+            <Divider sx={{ borderColor: '#e2e8f0' }} />
 
             {/* Q11 */}
             <FormControl component="fieldset">
-              <FormLabel sx={{ color: '#f1f5f9', fontWeight: 600, mb: 1 }}>
+              <FormLabel sx={{ color: '#0f172a', fontWeight: 700, mb: 1 }}>
                 11. How familiar is your target customer with technical terms related to your product?
               </FormLabel>
               <RadioGroup
                 value={q11Score}
                 onChange={(e) => setQ11Score(Number(e.target.value))}
               >
-                <FormControlLabel value={1} control={<Radio color="primary" />} label="1: Not familiar at all" />
-                <FormControlLabel value={2} control={<Radio color="primary" />} label="2: Slightly familiar" />
-                <FormControlLabel value={3} control={<Radio color="primary" />} label="3: Moderately familiar" />
-                <FormControlLabel value={4} control={<Radio color="primary" />} label="4: Very familiar" />
-                <FormControlLabel value={5} control={<Radio color="primary" />} label="5: Highly familiar" />
+                <FormControlLabel value={1} control={<Radio color="primary" />} label="1: Not familiar at all" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={2} control={<Radio color="primary" />} label="2: Slightly familiar" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={3} control={<Radio color="primary" />} label="3: Moderately familiar" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={4} control={<Radio color="primary" />} label="4: Very familiar" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={5} control={<Radio color="primary" />} label="5: Highly familiar" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
               </RadioGroup>
             </FormControl>
 
-            <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
+            <Divider sx={{ borderColor: '#e2e8f0' }} />
 
             {/* Q12 */}
             <FormControl component="fieldset">
-              <FormLabel sx={{ color: '#f1f5f9', fontWeight: 600, mb: 1 }}>
+              <FormLabel sx={{ color: '#0f172a', fontWeight: 700, mb: 1 }}>
                 12. How detailed should your marketing communication be for your target audience? (Preference)
               </FormLabel>
-              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 1 }}>
+              <Typography variant="caption" sx={{ color: '#475569', display: 'block', mb: 1, fontWeight: 500 }}>
                 Note: Communication preference is captured as user guidance, NOT used as an input feature for predicting literacy.
               </Typography>
               <RadioGroup
                 value={q12Score}
                 onChange={(e) => setQ12Score(Number(e.target.value))}
               >
-                <FormControlLabel value={1} control={<Radio color="primary" />} label="1: Very simple, non-technical language" />
-                <FormControlLabel value={2} control={<Radio color="primary" />} label="2: Mostly simple language" />
-                <FormControlLabel value={3} control={<Radio color="primary" />} label="3: Balanced technical and simple language" />
-                <FormControlLabel value={4} control={<Radio color="primary" />} label="4: Detailed and technical language" />
-                <FormControlLabel value={5} control={<Radio color="primary" />} label="5: Highly technical and professional language" />
+                <FormControlLabel value={1} control={<Radio color="primary" />} label="1: Very simple, non-technical language" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={2} control={<Radio color="primary" />} label="2: Mostly simple language" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={3} control={<Radio color="primary" />} label="3: Balanced technical and simple language" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={4} control={<Radio color="primary" />} label="4: Detailed and technical language" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
+                <FormControlLabel value={5} control={<Radio color="primary" />} label="5: Highly technical and professional language" sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a' } }} />
               </RadioGroup>
             </FormControl>
 
             {/* Live ML Prediction Preview Card */}
-            <Card sx={{ bgcolor: 'rgba(13, 148, 136, 0.1)', border: '1px solid rgba(13, 148, 136, 0.3)' }}>
+            <Card sx={{ bgcolor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '16px' }}>
               <CardContent sx={{ p: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <Sparkles size={18} color="#14b8a6" />
-                  <Typography variant="subtitle2" sx={{ color: '#14b8a6', fontWeight: 700 }}>
+                  <Sparkles size={18} color="#15803d" />
+                  <Typography variant="subtitle2" sx={{ color: '#15803d', fontWeight: 700 }}>
                     PyTorch Multimodal Classifier (Live Preview)
                   </Typography>
                   {predicting && <CircularProgress size={14} color="primary" />}
@@ -670,7 +673,7 @@ export const AssessmentWizard: React.FC = () => {
                 {livePrediction ? (
                   <Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-                      <Typography variant="body2" sx={{ color: '#f1f5f9' }}>
+                      <Typography variant="body2" sx={{ color: '#0f172a', fontWeight: 600 }}>
                         Predicted Category: <strong>{livePrediction.predicted_class} Literacy</strong>
                       </Typography>
                       <Chip
@@ -679,14 +682,14 @@ export const AssessmentWizard: React.FC = () => {
                         color="primary"
                       />
                     </Box>
-                    <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block' }}>
+                    <Typography variant="caption" sx={{ color: '#334155', display: 'block', fontWeight: 500 }}>
                       Distribution — Low: {(livePrediction.probabilities?.Low * 100).toFixed(0)}% | Medium:{' '}
                       {(livePrediction.probabilities?.Medium * 100).toFixed(0)}% | High:{' '}
                       {(livePrediction.probabilities?.High * 100).toFixed(0)}%
                     </Typography>
                   </Box>
                 ) : (
-                  <Typography variant="caption" sx={{ color: '#94a3b8' }}>
+                  <Typography variant="caption" sx={{ color: '#475569', fontWeight: 500 }}>
                     Adjust scores above to see real-time multimodal model predictions.
                   </Typography>
                 )}
@@ -701,10 +704,10 @@ export const AssessmentWizard: React.FC = () => {
         <Card sx={{ p: 2 }}>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#14b8a6', mb: 0.5 }}>
-                Page 4 — Customer Benefits & Marketing Channels (FR4, FR5)
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#0f172a', mb: 0.5 }}>
+                Page 4 — Customer Benefits &amp; Marketing Channels (FR4, FR5)
               </Typography>
-              <Typography variant="body2" sx={{ color: '#94a3b8' }}>
+              <Typography variant="body2" sx={{ color: '#475569' }}>
                 Separates customer pain points from benefits, with channel performance history.
               </Typography>
             </Box>
@@ -721,7 +724,7 @@ export const AssessmentWizard: React.FC = () => {
             />
 
             <Box>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a', mb: 1 }}>
                 14. What are the main customer pain points your product solves? (Q14)
               </Typography>
               <FormGroup row>
@@ -739,13 +742,14 @@ export const AssessmentWizard: React.FC = () => {
                       />
                     }
                     label={pain}
+                    sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                   />
                 ))}
               </FormGroup>
             </Box>
 
             <Box>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a', mb: 1 }}>
                 15. Which marketing channels are you currently using? (Q15)
               </Typography>
               <FormGroup row>
@@ -769,6 +773,7 @@ export const AssessmentWizard: React.FC = () => {
                       />
                     }
                     label={ch}
+                    sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                   />
                 ))}
               </FormGroup>
@@ -776,11 +781,11 @@ export const AssessmentWizard: React.FC = () => {
 
             {/* Q16 Dynamic Filtered Channels */}
             {!q15Channels.includes('None currently') && q15Channels.length > 0 && (
-              <Box sx={{ bgcolor: 'rgba(0,0,0,0.15)', p: 2, borderRadius: 2 }}>
-                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+              <Box sx={{ bgcolor: '#f8fafc', border: '1px solid #e2e8f0', p: 2.5, borderRadius: 3 }}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a', mb: 1 }}>
                   16. Which marketing channels have worked best for you so far? (Q16)
                 </Typography>
-                <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 1 }}>
+                <Typography variant="caption" sx={{ color: '#475569', display: 'block', mb: 1, fontWeight: 500 }}>
                   Dynamically filtered to only channels selected in Q15.
                 </Typography>
                 <FormGroup row>
@@ -798,6 +803,7 @@ export const AssessmentWizard: React.FC = () => {
                         />
                       }
                       label={ch}
+                      sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                     />
                   ))}
                   <FormControlLabel
@@ -812,13 +818,14 @@ export const AssessmentWizard: React.FC = () => {
                       />
                     }
                     label="No performance data yet"
+                    sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                   />
                 </FormGroup>
               </Box>
             )}
 
             <Box>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a', mb: 1 }}>
                 17. What type of content does your target audience engage with most? (Q17)
               </Typography>
               <FormGroup row>
@@ -836,6 +843,7 @@ export const AssessmentWizard: React.FC = () => {
                       />
                     }
                     label={content}
+                    sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                   />
                 ))}
               </FormGroup>
@@ -849,10 +857,10 @@ export const AssessmentWizard: React.FC = () => {
         <Card sx={{ p: 2 }}>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Box>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#14b8a6', mb: 0.5 }}>
-                Page 5 — Budget Allocation & Success Goals (FR6)
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#0f172a', mb: 0.5 }}>
+                Page 5 — Budget Allocation &amp; Success Goals (FR6)
               </Typography>
-              <Typography variant="body2" sx={{ color: '#94a3b8' }}>
+              <Typography variant="body2" sx={{ color: '#475569' }}>
                 Monetary amounts in Sri Lankan Rupees (LKR) with integer arithmetic and constraint validation.
               </Typography>
             </Box>
@@ -919,7 +927,7 @@ export const AssessmentWizard: React.FC = () => {
             )}
 
             <Box>
-              <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f172a', mb: 1 }}>
                 21. What would define a successful campaign for your business? (Q21)
               </Typography>
               <FormGroup row>
@@ -937,6 +945,7 @@ export const AssessmentWizard: React.FC = () => {
                       />
                     }
                     label={goal}
+                    sx={{ '& .MuiFormControlLabel-label': { color: '#0f172a', fontWeight: 500 } }}
                   />
                 ))}
               </FormGroup>
@@ -972,44 +981,44 @@ export const AssessmentWizard: React.FC = () => {
         <Card sx={{ p: 3 }}>
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <Box>
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#f1f5f9', mb: 1 }}>
-                Assessment Review & Pipeline Execution
+              <Typography variant="h5" sx={{ fontWeight: 800, color: '#0f172a', mb: 1 }}>
+                Assessment Review &amp; Pipeline Execution
               </Typography>
-              <Typography variant="body2" sx={{ color: '#94a3b8' }}>
-                Please review your campaign inputs. Upon confirmation, the backend orchestrates the PyTorch classifier, Gemini messaging, AHP channel ranking, and budget optimization.
+              <Typography variant="body2" sx={{ color: '#475569' }}>
+                Please review your campaign inputs. Upon confirmation, the backend orchestrates the PyTorch classifier, OpenAI feature-value messaging, AHP channel ranking, and budget optimization.
               </Typography>
             </Box>
 
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, md: 6 }}>
-                <Box sx={{ bgcolor: 'rgba(0,0,0,0.2)', p: 2, borderRadius: 2 }}>
-                  <Typography variant="subtitle2" sx={{ color: '#14b8a6', fontWeight: 600 }}>
-                    Product & Audience Summary
+                <Box sx={{ bgcolor: '#f8fafc', border: '1px solid #e2e8f0', p: 2.5, borderRadius: 3 }}>
+                  <Typography variant="subtitle2" sx={{ color: '#0f766e', fontWeight: 700 }}>
+                    Product &amp; Audience Summary
                   </Typography>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Typography variant="body2" sx={{ mt: 1, color: '#0f172a' }}>
                     <strong>Product:</strong> {q1Name} ({q4Industry})
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: '#0f172a' }}>
                     <strong>Market:</strong> {q6MarketType} | Location: {q9Location}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: '#0f172a' }}>
                     <strong>Comfort / Terms:</strong> {q10Score}/5 comfort, {q11Score}/5 terms
                   </Typography>
                 </Box>
               </Grid>
 
               <Grid size={{ xs: 12, md: 6 }}>
-                <Box sx={{ bgcolor: 'rgba(0,0,0,0.2)', p: 2, borderRadius: 2 }}>
-                  <Typography variant="subtitle2" sx={{ color: '#38bdf8', fontWeight: 600 }}>
-                    Budget & Goals
+                <Box sx={{ bgcolor: '#f8fafc', border: '1px solid #e2e8f0', p: 2.5, borderRadius: 3 }}>
+                  <Typography variant="subtitle2" sx={{ color: '#0284c7', fontWeight: 700 }}>
+                    Budget &amp; Goals
                   </Typography>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Typography variant="body2" sx={{ mt: 1, color: '#0f172a' }}>
                     <strong>Monthly Budget:</strong> LKR {q18Budget.toLocaleString()}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: '#0f172a' }}>
                     <strong>Total Planned ({q20Months} mo):</strong> LKR {(q18Budget * q20Months).toLocaleString()}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: '#0f172a' }}>
                     <strong>Primary Objective:</strong> {q21Goals.join(', ')}
                   </Typography>
                 </Box>
@@ -1030,6 +1039,7 @@ export const AssessmentWizard: React.FC = () => {
           disabled={activeStep === 0 || submitting}
           startIcon={<ArrowLeft size={16} />}
           onClick={handleBack}
+          sx={{ borderRadius: 9999, borderColor: '#e2e8f0', color: '#475569', fontWeight: 600, bgcolor: '#ffffff' }}
         >
           Previous
         </Button>
@@ -1037,21 +1047,22 @@ export const AssessmentWizard: React.FC = () => {
         {activeStep < 5 ? (
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             endIcon={<ArrowRight size={16} />}
             onClick={handleNext}
+            sx={{ borderRadius: 9999, bgcolor: '#bef264', color: '#14532d', fontWeight: 700, px: 3, '&:hover': { bgcolor: '#a3e635' } }}
           >
             Next Step
           </Button>
         ) : (
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="large"
             disabled={submitting}
             startIcon={submitting ? <CircularProgress size={18} color="inherit" /> : <Sparkles size={18} />}
             onClick={handleSubmitAnalysis}
-            sx={{ px: 4, py: 1.25 }}
+            sx={{ borderRadius: 9999, bgcolor: '#bef264', color: '#14532d', fontWeight: 800, px: 4, py: 1.25, '&:hover': { bgcolor: '#a3e635' } }}
           >
             {submitting ? 'Orchestrating Assessment...' : 'Run Strategy Assessment'}
           </Button>

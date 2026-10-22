@@ -9,6 +9,7 @@ from typing import Dict, Any, List, Optional
 from app.schemas.audience import AudiencePredictRequest, AudiencePredictionResult
 from app.schemas.common import TechLiteracyLevel, DataProvenanceEnum
 from app.core.logging import logger
+from app.core.config import settings
 
 CLASS_NAMES = ["Low", "Medium", "High"]
 
@@ -22,8 +23,8 @@ def rule_baseline(q10: int, q11: int) -> str:
 
 
 class AudienceClassifierService:
-    def __init__(self, artifacts_dir: str = "ml/artifacts"):
-        self.artifacts_dir = artifacts_dir
+    def __init__(self, artifacts_dir: Optional[str] = None):
+        self.artifacts_dir = artifacts_dir or settings.MODEL_ARTIFACT_DIR
         self.lr_pipeline = None
         self.fusion_model = None
         self.fusion_preprocessor = None

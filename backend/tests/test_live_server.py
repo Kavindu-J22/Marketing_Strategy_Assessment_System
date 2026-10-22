@@ -1,6 +1,16 @@
 import urllib.request
 import json
+import socket
+import pytest
 
+def is_server_running(host="127.0.0.1", port=8000):
+    try:
+        with socket.create_connection((host, port), timeout=0.5):
+            return True
+    except OSError:
+        return False
+
+@pytest.mark.skipif(not is_server_running(), reason="Live FastAPI server not active on http://127.0.0.1:8000")
 def test_live_server():
     base_url = "http://127.0.0.1:8000/api/v1"
 

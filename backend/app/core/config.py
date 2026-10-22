@@ -103,8 +103,24 @@ class Settings(BaseSettings):
     GEMINI_TEMPERATURE: float = Field(default=0.3)
     GEMINI_MAX_RETRIES: int = Field(default=3)
 
+    @field_validator("MODEL_ARTIFACT_DIR", "DATASET_PATH", "ML_DATASET_PATH", "BUDGET_DATASET_PATH", mode="after")
+    def resolve_relative_paths(cls, v: str) -> str:
+        if os.path.isabs(v):
+            return v
+        if os.path.exists(v):
+            return v
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+        candidate = os.path.join(project_root, v)
+        if os.path.exists(candidate):
+            return candidate
+        return v
+
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(
+            ".env",
+            "../.env",
+            os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")), ".env")
+        ),
         env_file_encoding="utf-8",
         extra="ignore"
     )

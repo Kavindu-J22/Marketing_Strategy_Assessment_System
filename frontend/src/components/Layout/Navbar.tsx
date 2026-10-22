@@ -10,11 +10,11 @@ import {
   Tooltip,
 } from '@mui/material';
 import {
-  Compass,
-  Cpu,
-  Building,
+  Bell,
   HelpCircle,
   BarChart2,
+  Grid as GridIcon,
+  Sparkles,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,93 +31,130 @@ export const Navbar: React.FC<Props> = () => {
       position="sticky"
       elevation={0}
       sx={{
-        backgroundColor: 'rgba(17, 24, 39, 0.95)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid #eef2f6',
         zIndex: 1200,
+        boxShadow: '0 1px 3px rgba(15, 23, 42, 0.03)',
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between', minHeight: 64, px: 3 }}>
         {/* Brand / Logo */}
         <Box
-          sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer' }}
+          sx={{ display: 'flex', alignItems: 'center', gap: 2, cursor: 'pointer' }}
           onClick={() => navigate('/')}
         >
-          <Box
-            sx={{
-              width: 38,
-              height: 38,
-              borderRadius: 2,
-              background: 'linear-gradient(135deg, #0d9488 0%, #0284c7 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 2px 10px rgba(13, 148, 136, 0.4)',
-            }}
-          >
-            <Compass color="#ffffff" size={22} />
-          </Box>
-          <Box>
-            <Typography variant="h6" sx={{ fontWeight: 700, color: '#f1f5f9', lineHeight: 1.2 }}>
-              Marketing Strategy Assessment
+          {/* Nexaura Logo Brand */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box
+              sx={{
+                width: 28,
+                height: 28,
+                borderRadius: '8px',
+                bgcolor: '#0f172a',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+              }}
+            >
+              <GridIcon size={16} />
+            </Box>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 800,
+                color: '#0f172a',
+                letterSpacing: '-0.03em',
+                fontSize: '1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              nexaura<Box component="span" sx={{ color: '#84cc16' }}>.</Box>
             </Typography>
-            <Typography variant="caption" sx={{ color: '#0d9488', fontWeight: 600 }}>
-              Consulting Framework Component | Sri Lankan Tech Companies
+          </Box>
+
+          <Box sx={{ height: 20, width: '1px', bgcolor: '#e2e8f0', mx: 0.5, display: { xs: 'none', sm: 'block' } }} />
+
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <Typography variant="body2" sx={{ fontWeight: 600, color: '#334155', lineHeight: 1.2 }}>
+              Product & Service Management Consulting Platform
+            </Typography>
+            <Typography variant="caption" sx={{ color: '#94a3b8', fontWeight: 500 }}>
+              SLIIT Academic Research 2026 • 4 Collaborative Components
             </Typography>
           </Box>
         </Box>
 
-        {/* Center / Workspace & Model Status */}
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
+        {/* Center / Research Pillar Badges */}
+        <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 1.5 }}>
           <Chip
-            icon={<Building size={14} color="#38bdf8" />}
-            label="CeylonTech Solutions (Pvt) Ltd"
+            icon={<Sparkles size={14} color="#166534" />}
+            label="Component 3: Marketing Strategy (Active)"
             size="small"
             sx={{
-              backgroundColor: 'rgba(2, 132, 199, 0.15)',
-              color: '#38bdf8',
-              border: '1px solid rgba(56, 189, 248, 0.3)',
-              fontWeight: 500,
+              backgroundColor: '#f7fee7',
+              color: '#15803d',
+              border: '1px solid #d9f99d',
+              fontWeight: 700,
+              px: 0.5,
             }}
           />
           <Chip
-            icon={<Cpu size={14} color="#10b981" />}
-            label="PyTorch Multimodal Fusion Net: Online"
+            label="PyTorch Multimodal + AHP + SLSQP"
             size="small"
             sx={{
-              backgroundColor: 'rgba(16, 185, 129, 0.15)',
-              color: '#34d399',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
+              backgroundColor: '#f8fafc',
+              color: '#64748b',
+              border: '1px solid #e2e8f0',
               fontWeight: 500,
             }}
           />
         </Box>
 
         {/* Right Action Icons */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Tooltip title="Research Methodology & Citations">
-            <IconButton onClick={() => navigate('/methodology')} sx={{ color: '#94a3b8' }}>
-              <HelpCircle size={20} />
+            <IconButton onClick={() => navigate('/methodology')} sx={{ color: '#64748b', '&:hover': { bgcolor: '#f1f5f9' } }}>
+              <HelpCircle size={19} />
             </IconButton>
           </Tooltip>
 
           <Tooltip title="Usability Survey (SUS)">
-            <IconButton onClick={() => navigate('/usability/sus')} sx={{ color: '#94a3b8' }}>
-              <BarChart2 size={20} />
+            <IconButton onClick={() => navigate('/usability/sus')} sx={{ color: '#64748b', '&:hover': { bgcolor: '#f1f5f9' } }}>
+              <BarChart2 size={19} />
             </IconButton>
           </Tooltip>
 
-          <Avatar
-            sx={{
-              width: 34,
-              height: 34,
-              bgcolor: '#0d9488',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-            }}
-          >
-            CT
-          </Avatar>
+          <Tooltip title="Notifications">
+            <IconButton sx={{ color: '#64748b', '&:hover': { bgcolor: '#f1f5f9' } }}>
+              <Bell size={19} />
+            </IconButton>
+          </Tooltip>
+
+          <Box sx={{ ml: 1, display: 'flex', alignItems: 'center', gap: 1.5, pl: 1.5, borderLeft: '1px solid #e2e8f0' }}>
+            <Avatar
+              sx={{
+                width: 36,
+                height: 36,
+                bgcolor: '#f1f5f9',
+                color: '#0f172a',
+                border: '1px solid #e2e8f0',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+              }}
+            >
+              AJ
+            </Avatar>
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Typography variant="body2" sx={{ fontWeight: 700, color: '#0f172a', lineHeight: 1.2 }}>
+                Alex Jensen
+              </Typography>
+              <Typography variant="caption" sx={{ color: '#94a3b8' }}>
+                Lead Researcher
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </Toolbar>
     </AppBar>
