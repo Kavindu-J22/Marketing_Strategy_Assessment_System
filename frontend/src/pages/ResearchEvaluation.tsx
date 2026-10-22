@@ -134,12 +134,12 @@ export const ResearchEvaluation: React.FC = () => {
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-          <BarChart2 size={28} color="#14b8a6" />
-          <Typography variant="h4" fontWeight={700}>
+          <BarChart2 size={28} color="#0f172a" />
+          <Typography variant="h4" sx={{ fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em' }}>
             Academic &amp; ML Evaluation Registry
           </Typography>
         </Box>
-        <Typography variant="body1" sx={{ color: '#94a3b8', maxWidth: 900 }}>
+        <Typography variant="body1" sx={{ color: '#64748b', maxWidth: 900, fontSize: '0.925rem' }}>
           Empirical evaluation results of the Machine Learning Audience Classifier and Decision Engines
           as defined in Research Proposal <strong>J26-ISE-313</strong> (SLIIT 2026).
         </Typography>
@@ -171,12 +171,12 @@ export const ResearchEvaluation: React.FC = () => {
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Typography variant="h6" fontWeight={700}>
+                <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff' }}>
                   Model Performance Comparison on Held-Out Test Set (N=500)
                 </Typography>
                 <Chip label="Group-Held-Out Split" size="small" sx={{ bgcolor: 'rgba(20, 184, 166, 0.1)', color: '#14b8a6' }} />
               </Box>
-              <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mb: 3 }}>
+              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 3 }}>
                 Evaluated with 0 company profile crossover between Train (70%), Validation (20%), and Test (10%).
               </Typography>
 
@@ -206,7 +206,7 @@ export const ResearchEvaluation: React.FC = () => {
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                 <Cpu size={22} color="#14b8a6" />
-                <Typography variant="h6" fontWeight={700}>
+                <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff' }}>
                   Multimodal Neural Fusion
                 </Typography>
               </Box>
@@ -239,7 +239,7 @@ export const ResearchEvaluation: React.FC = () => {
       {/* Model Benchmark Table */}
       <Card sx={{ mb: 4, bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <CardContent>
-          <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
+          <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff', mb: 2 }}>
             Complete Evaluation Benchmark Table (N=500 Test Samples)
           </Typography>
 
@@ -295,10 +295,10 @@ export const ResearchEvaluation: React.FC = () => {
         <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
-              <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
+              <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff', mb: 1 }}>
                 Held-Out Confusion Matrix
               </Typography>
-              <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mb: 2 }}>
+              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 2 }}>
                 Rows: Ground Truth | Columns: Multimodal Model Predicted
               </Typography>
 
@@ -339,10 +339,10 @@ export const ResearchEvaluation: React.FC = () => {
         <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ bgcolor: '#111827', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
             <CardContent>
-              <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
+              <Typography variant="h6" fontWeight={700} sx={{ color: '#ffffff', mb: 1 }}>
                 Per-Class Performance Metrics
               </Typography>
-              <Typography variant="caption" sx={{ color: '#64748b', display: 'block', mb: 2 }}>
+              <Typography variant="caption" sx={{ color: '#94a3b8', display: 'block', mb: 2 }}>
                 Precision, Recall, and F1 Score for Technical Literacy classes
               </Typography>
 
